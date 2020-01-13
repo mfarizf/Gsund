@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFB76A</color>
+    <color name="colorPrimaryDark">#FEC030</color>
+    <color name="colorAccent">#FFC001</color>
+    <color name="putih">#fff</color>
+    <color name="transparentGelap">#56000000</color>
+    <color name="transparentCerah">#23000000</color>
+    <color name="transparent">#00000000</color>
+
+</resources>

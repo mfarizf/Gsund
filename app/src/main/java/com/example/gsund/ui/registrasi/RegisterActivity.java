@@ -23,11 +23,11 @@ import io.realm.RealmConfiguration;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterCallback {
     @BindView(R.id.btn_daftar) Button btn_daftar;
-    @BindView(R.id.nama) EditText nama;
-    @BindView(R.id.umur) EditText umur;
-    @BindView(R.id.berat_badan) EditText beratBadan;
-    @BindView(R.id.tinggi_badan) EditText tinggiBadan;
-    @BindView(R.id.riwayat_penyakit) EditText riwayatPenyakit;
+    @BindView(R.id.register_input_nama) EditText nama;
+    @BindView(R.id.register_input_umur) EditText umur;
+    @BindView(R.id.register_input_bb) EditText beratBadan;
+    @BindView(R.id.register_input_tb) EditText tinggiBadan;
+    @BindView(R.id.register_input_riwayat_penyakit) EditText riwayatPenyakit;
 
     UserModel userModel;
     UserHelper userHelper;

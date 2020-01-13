@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/judul" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:id="@+id/gambar_halaman_utama"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
@@ -45,7 +46,7 @@
         android:id="@+id/register_input_nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Masukan Nama"
+        android:hint="@string/masukan_nama"
         android:ems="12"
         android:padding="3dp"
         android:background="@drawable/outline_register_edit_text"
@@ -91,44 +92,25 @@
         app:layout_constraintStart_toStartOf="@+id/register_input_tb"
         app:layout_constraintTop_toBottomOf="@id/register_input_bb" />
 
-    <TextView
-        android:letterSpacing=""
-        android:id="@+id/txt_jenis_kelamin"
+    <EditText
+        android:id="@+id/register_input_umur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/register_input_riwayat_penyakit"
-        app:layout_constraintStart_toStartOf="@id/register_input_riwayat_penyakit"
-        android:layout_marginTop="15dp"
-        android:text="@string/jenis_kelamin"
-        android:textSize="25dp"
-        android:fontFamily="@font/notosans_regular"
-        />
+        android:background="@drawable/outline_register_edit_text"
+        android:ems="12"
+        android:layout_marginTop="12dp"
+        android:hint="@string/masukan_umur"
+        android:padding="3dp"
+        app:layout_constraintEnd_toEndOf="@+id/register_input_bb"
+        app:layout_constraintStart_toStartOf="@+id/register_input_tb"
+        app:layout_constraintTop_toBottomOf="@+id/register_input_riwayat_penyakit" />
 
-    <CheckBox
-        android:id="@+id/register_cb_pria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txt_jenis_kelamin"
-        android:text="@string/pria"
-        android:textColor="@color/merah_general"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="@id/txt_jenis_kelamin"
-        />
-
-    <CheckBox
-        android:id="@+id/register_cb_wanita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/wanita"
-        android:textColor="@color/merah_general"
-        app:layout_constraintEnd_toEndOf="@id/txt_jenis_kelamin"
-        app:layout_constraintTop_toBottomOf="@id/txt_jenis_kelamin" />
 
     <Button
+        android:id="@+id/btn_daftar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/register_cb_pria"
+        app:layout_constraintTop_toBottomOf="@id/register_input_umur"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/button_rounded_red"
@@ -136,7 +118,7 @@
         android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
         android:textAllCaps="false"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@color/putih"
         android:fontFamily="@font/notosans_regular"
         />

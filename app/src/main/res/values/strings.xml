@@ -13,4 +13,5 @@
     <string name="riwayat_penyakit">Riwayat Penyakit</string>
     <string name="pria">Pria</string>
     <string name="wanita">Wanita</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
 </resources>

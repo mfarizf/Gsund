@@ -6,4 +6,11 @@
     <string name="history">Histori</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="motto">Mulai Sehatmu Sekarang Juga</string>
+    <string name="tinggi_badan">Tinggi Badan</string>
+    <string name="berat_bedan">Berat Bedan</string>
+    <string name="riwayat_penyakit">Riwayat Penyakit</string>
+    <string name="pria">Pria</string>
+    <string name="wanita">Wanita</string>
 </resources>

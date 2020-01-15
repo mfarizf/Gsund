@@ -18,27 +18,101 @@
             android:paddingBottom="20dp"
             tools:context=".ui.home.homeFragment">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:background="@drawable/round_toolbar" />
+            <TextView
+                android:id="@+id/sapaan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Hai Kamu"/>
 
+            <TextView
+                android:id="@+id/tv_rekomendasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Ini Rekomendasi Untuk Kamu"
+                android:layout_below="@+id/sapaan"
+                android:layout_marginStart="16dp"/>
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_profile"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_alignParentEnd="true"
+                android:background="@color/merah_general"
+                android:layout_margin="16dp"/>
 
             <com.yarolegovich.discretescrollview.DiscreteScrollView
                 android:id="@+id/option"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_below="@id/toolbar"
+                android:layout_below="@id/tv_rekomendasi"
                 app:dsv_orientation="horizontal"
                 tools:listitem="@layout/item_option_home" />
+
+            <LinearLayout
+                android:id="@+id/pilihan_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/option">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="112dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/merah_general"/>
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="112dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorAccent"/>
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="112dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_tips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/option"
+                android:layout_below="@id/pilihan_menu"
                 android:layout_margin="20dp"
                 android:fontFamily="@font/product_sans"
                 android:text="Tips"
@@ -49,7 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_tips"
-                tools:listitem="@layout/item_tips" />
+                />
 
 
         </RelativeLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import com.example.gsund.R;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
+import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.utils.RecyclerOnTouchListener;
 import com.example.gsund.utils.RecyclerViewClickListener;
 import com.yarolegovich.discretescrollview.DSVOrientation;
@@ -23,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.option)
@@ -89,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
         pDialog.setTitleText("Are you Sure ?");
         pDialog.setContentText(text);
         pDialog.show();
+    }
+
+    @OnClick(R.id.img_profile)
+    void profile(){
+        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
     }
 
 }

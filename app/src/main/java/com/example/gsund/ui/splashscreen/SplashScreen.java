@@ -38,12 +38,12 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }else{
                     if (preferencesManager.getId() != null){
-                    startActivity(new Intent(SplashScreen.this,MainActivity.class));
-                    finish();
-                }else{
-                    startActivity(new Intent(SplashScreen.this, RegisterActivity.class));
-                    finish();
-                }
+                        startActivity(new Intent(SplashScreen.this,MainActivity.class));
+                        finish();
+                    }else{
+                        startActivity(new Intent(SplashScreen.this, RegisterActivity.class));
+                        finish();
+                    }
             }
         },3000);
     }

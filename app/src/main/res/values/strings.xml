@@ -24,4 +24,14 @@
     <string name="deskripsi_intro_2">Semua Kemudahan tersedia di aplikasi Gesund,baik dalam segi fitur atupun pelayanan</string>
     <string name="deskripsi_intro_3">Semua fitur yang dibutuhkan anda sekarang telah tersedia di aplikasi Raisa, Ayo coba sekarang juga!</string>
     <string name="next">Next</string>
+    <string name="txt_button_profile">Profile</string>
+    <string name="txt_button_progress">Progress</string>
+    <string name="sample_email">mori_nana@gmail.jp</string>
+    <string name="sample_name">Mori Nana</string>
+    <string name="profile_jenis_kelamin">Jenis Kelamin</string>
+    <string name="profile_umur">Umur</string>
+    <string name="profile_riwayat_penyakit">Riwayat Penyakit</string>
+    <string name="isi_profile_name">Mori Nana</string>
+    <string name="profile_tb">Tinggi Badan</string>
+    <string name="profile_bb">Berat Badan</string>
 </resources>

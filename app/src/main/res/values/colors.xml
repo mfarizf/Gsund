@@ -8,5 +8,11 @@
     <color name="transparentCerah">#23000000</color>
     <color name="transparent">#00000000</color>
     <color name="merah_general">#F15B5D</color>
+    <color name="biru_langit">#37CAFB</color>
+    <color name="hijau_rumput">#93E789</color>
+    <color name="kuning_spongebob">#FADF66</color>
+    <color name="orange_jeruk">#FC8703</color>
+
+
 
 </resources>

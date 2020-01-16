@@ -10,7 +10,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.profile.ProfileActivity"/>
+        <activity android:name=".ui.menumakan.MenuMakan"></activity>
+        <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.registrasi.RegisterActivity" />
         <activity android:name=".ui.intro.Intro" />
         <activity android:name=".ui.splashscreen.SplashScreen">

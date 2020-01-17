@@ -29,8 +29,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterCallb
     @BindView(R.id.register_input_tb) EditText tinggiBadan;
     @BindView(R.id.register_input_riwayat_penyakit) EditText riwayatPenyakit;
 
-    UserModel userModel;
-    UserHelper userHelper;
     PreferencesManager preferencesManager;
     Realm realm;
     RegisterPresenter registerPresenter;

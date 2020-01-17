@@ -11,7 +11,16 @@ public class UserModel extends RealmObject {
     private int umur;
     private int beratBadan;
     private int tinggiBadan;
+    private String jenisKelamin;
     private String riwayatPenyakit;
+
+    public String getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(String jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
 
     public int getId() {
         return id;

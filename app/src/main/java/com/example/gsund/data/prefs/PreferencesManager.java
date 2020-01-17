@@ -36,4 +36,28 @@ public class PreferencesManager {
         edit.apply();
     }
 
+    public Integer getBMR(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
+        return sharedPreferences.getInt("bmr",0);
+    }
+
+    public void setBMR(Integer bmr){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putInt("bmr", bmr);
+        edit.apply();
+    }
+
+    public Integer getBMI(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
+        return sharedPreferences.getInt("bmi",0);
+    }
+
+    public void setBMI(Integer bmi){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putInt("bmi", bmi);
+        edit.apply();
+    }
+
 }

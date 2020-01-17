@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.menumakan.MenuMakan"></activity>
+        <activity android:name=".ui.profile_progress.ProgressProfileActivity"/>
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.registrasi.RegisterActivity" />
         <activity android:name=".ui.intro.Intro" />

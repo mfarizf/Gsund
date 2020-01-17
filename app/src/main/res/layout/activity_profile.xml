@@ -50,55 +50,65 @@
         app:cardUseCompatPadding="true"
         android:elevation="10dp"
         app:cardCornerRadius="20dp"
-                                        >
+        >
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/picture_profile"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="top|start"
-            android:layout_margin="30dp"
-            android:src="@drawable/pic_sample_1" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/email_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/name_profile"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="27dp"
-            android:layout_toEndOf="@id/picture_profile"
-            android:text="@string/sample_email" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/picture_profile"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="30dp"
+                android:src="@drawable/pic_sample_1" />
 
-        <TextView
+            <TextView
+                android:id="@+id/email_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_profile"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_toEndOf="@id/picture_profile"
+                android:text="@string/sample_email" />
+
+            <TextView
                 android:id="@+id/name_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_toEndOf="@id/picture_profile"
-                 android:fontFamily="@font/notosans_bold"
-                 android:layout_marginTop="40dp"
+                android:fontFamily="@font/notosans_bold"
+                android:layout_marginTop="40dp"
                 android:text="@string/sample_name"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-        <Button
-            android:layout_width="145dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom|start"
-            android:background="@drawable/button_rounded_red"
-            android:text="@string/txt_button_profile"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:layout_width="145dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom|end"
-            android:background="@drawable/button_rounded_red"
-            android:text="@string/txt_button_progress"
-            android:textAllCaps="false"
-            />
+            <Button
+                android:id="@+id/btn_profile"
+                android:layout_width="145dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom|start"
+                android:background="@drawable/button_rounded_red"
+                android:text="@string/txt_button_profile"
+                android:textAllCaps="false"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                />
+            <Button
+                android:id="@+id/btn_progress"
+                android:layout_width="145dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/button_rounded_red"
+                android:text="@string/txt_button_progress"
+                android:textAllCaps="false"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView

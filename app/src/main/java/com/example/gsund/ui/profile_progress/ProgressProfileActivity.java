@@ -15,10 +15,9 @@ import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
 import com.example.gsund.R;
-import com.example.gsund.data.db.model.MakananModel;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import butterknife.BindView;
 

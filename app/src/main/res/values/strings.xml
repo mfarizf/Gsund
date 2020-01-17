@@ -34,4 +34,8 @@
     <string name="isi_profile_name">Mori Nana</string>
     <string name="profile_tb">Tinggi Badan</string>
     <string name="profile_bb">Berat Badan</string>
+    <string name="nilai_kekurangan_berat"><![CDATA[<18.50]]></string>
+    <string name="nilai_ideal">18.50-24.99</string>
+    <string name="nilai_gemuk">25.00-29.99</string>
+    <string name="nilai_obesitas"><![CDATA[>30.00]]></string>
 </resources>

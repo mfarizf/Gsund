@@ -13,6 +13,7 @@ import com.example.gsund.R;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
+import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.utils.RecyclerOnTouchListener;
 import com.example.gsund.utils.RecyclerViewClickListener;
@@ -99,4 +100,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
     }
 
+
+
+    public void item_food(View view) {
+        Intent i = new Intent(MainActivity.this, MenuMakan.class);
+        startActivity(i);
+    }
 }

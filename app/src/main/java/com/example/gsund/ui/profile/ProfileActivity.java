@@ -23,7 +23,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         preferencesManager = new PreferencesManager(this);
-        Progress();
     }
 
     @OnClick(R.id.btn_progress)

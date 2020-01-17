@@ -106,4 +106,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, MenuMakan.class);
         startActivity(i);
     }
+
+
 }

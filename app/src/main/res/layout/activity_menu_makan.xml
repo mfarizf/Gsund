@@ -39,6 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_nama_menu" />
 
     <Button
+        android:onClick="lihat_semua"
         app:layout_constraintHorizontal_bias="0.8"
         android:layout_marginTop="13dp"
         android:id="@+id/btn_lihat_semua"

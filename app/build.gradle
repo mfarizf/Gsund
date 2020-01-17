@@ -83,4 +83,5 @@ dependencies {
     implementation 'com.github.TutorialsAndroid:KAlertDialog:v7.0.19'
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    implementation 'mobi.gspd:segmentedbarview:1.1.6@aar'
 }

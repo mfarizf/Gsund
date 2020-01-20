@@ -1,4 +1,4 @@
-    package com.example.gsund.ui.intro;
+    package com.example.gsund.ui.intro.fragment;
 
 
 import android.os.Bundle;

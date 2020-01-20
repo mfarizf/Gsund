@@ -1,4 +1,4 @@
-package com.example.gsund.ui.intro;
+package com.example.gsund.ui.intro.fragment;
 
 
 import android.os.Bundle;
@@ -11,14 +11,13 @@ import android.view.ViewGroup;
 
 import com.example.gsund.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class intro3 extends Fragment {
+public class intro1 extends Fragment {
 
 
-    public intro3() {
+    public intro1() {
         // Required empty public constructor
     }
 
@@ -27,7 +26,7 @@ public class intro3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_intro3, container, false);
+        return inflater.inflate(R.layout.fragment_intro1, container, false);
     }
 
 }

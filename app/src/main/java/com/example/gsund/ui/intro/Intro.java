@@ -10,6 +10,8 @@ import android.os.Handler;
 import androidx.fragment.app.Fragment;
 
 import com.example.gsund.data.prefs.PreferencesManager;
+import com.example.gsund.ui.intro.fragment.intro1;
+import com.example.gsund.ui.intro.fragment.intro2;
 import com.example.gsund.ui.registrasi.RegisterActivity;
 import com.github.paolorotolo.appintro.AppIntro2;
 

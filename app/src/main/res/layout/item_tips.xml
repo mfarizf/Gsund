@@ -2,7 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="170dp"
-    android:layout_height="120dp"
+    android:layout_height="180dp"
+    android:layout_marginBottom="10dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     android:elevation="9dp"
@@ -25,15 +26,33 @@
             android:layout_height="match_parent"
             android:background="@color/transparentGelap"/>
 
-        <TextView
-            android:id="@+id/judul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/product_sans"
-            android:text="Food"
-            android:textColor="@color/putih"
-            android:textSize="30sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#fff"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:layout_gravity="bottom">
+            <TextView
+                android:id="@+id/judul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_regular"
+                android:text="Food"
+                android:textColor="#000"
+                android:textSize="22sp" />
+            <TextView
+                android:id="@+id/isi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_regular"
+                android:text="ini adalah makanan Enak"
+                android:singleLine="true"
+                android:layout_below="@+id/judul"
+                android:textColor="#000"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
     </FrameLayout>
 </androidx.cardview.widget.CardView>

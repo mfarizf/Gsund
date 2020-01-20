@@ -13,6 +13,7 @@ import com.example.gsund.R;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
+import com.example.gsund.ui.menumakan.DetailMakanan;
 import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.utils.RecyclerOnTouchListener;
@@ -77,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerTips.addOnItemTouchListener(new RecyclerOnTouchListener(MainActivity.this, recyclerTips, new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                showDialog(item.get(position).getName());
+                
+                startActivity(new Intent(MainActivity.this, DetailMakanan.class));
             }
 
             @Override

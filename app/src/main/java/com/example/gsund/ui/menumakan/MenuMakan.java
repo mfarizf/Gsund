@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.gsund.R;
-import com.example.gsund.ui.kumpulanmakanan.KumpulanMakan;
-import com.example.gsund.ui.main.MainActivity;
 
 public class MenuMakan extends AppCompatActivity {
 

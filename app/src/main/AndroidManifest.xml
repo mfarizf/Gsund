@@ -10,7 +10,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.kumpulanmakanan.KumpulanMakan"></activity>
+        <activity android:name=".ui.menumakan.DetailMakanan"></activity>
+        <activity android:name=".ui.menumakan.KumpulanMakan" />
         <activity android:name=".ui.menumakan.MenuMakan" />
         <activity android:name=".ui.profile_progress.ProgressProfileActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />

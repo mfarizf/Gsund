@@ -1,4 +1,4 @@
-package com.example.gsund.ui.kumpulanmakanan;
+package com.example.gsund.ui.menumakan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.gsund.R;
 
-public class KumpulanMakan extends AppCompatActivity {
+public class DetailMakanan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kumpulan_makan);
+        setContentView(R.layout.activity_detail_makanan);
     }
 }

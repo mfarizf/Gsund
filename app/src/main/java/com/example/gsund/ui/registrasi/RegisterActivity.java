@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.gsund.R;
 import com.example.gsund.data.db.helper.UserHelper;
@@ -40,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterCallb
         ButterKnife.bind(this);
         preferencesManager = new PreferencesManager(this);
 
-
         Realm.init(RegisterActivity.this);
         RealmConfiguration configuration = new RealmConfiguration.Builder().build();
         realm = Realm.getInstance(configuration);
@@ -57,14 +57,30 @@ public class RegisterActivity extends AppCompatActivity implements RegisterCallb
 
     @OnClick(R.id.btn_daftar)
     public void daftar(View view){
-        String namaUser = nama.getText().toString();
-        int umurUser = Integer.parseInt(umur.getText().toString());
-        int bb = Integer.parseInt(beratBadan.getText().toString());
-        int tb = Integer.parseInt(tinggiBadan.getText().toString());
-        String riwayatPenyakitUser = riwayatPenyakit.getText().toString();
+        if  (nama.getText().toString().equals(null) &&
+                umur.getText().toString().equals(null) &&
+                        beratBadan.getText().toString().equals(null) &&
+                                tinggiBadan.getText().toString().equals(null) &&
+                                        riwayatPenyakit.getText().toString().equals(null)){
 
-        registerPresenter.getUser(namaUser,umurUser,bb,tb,riwayatPenyakitUser);
+            String namaUser = nama.getText().toString();
+            int umurUser = Integer.parseInt(umur.getText().toString());
+            int bb = Integer.parseInt(beratBadan.getText().toString());
+            int tb = Integer.parseInt(tinggiBadan.getText().toString());
+            String riwayatPenyakitUser = riwayatPenyakit.getText().toString();
 
+            if  (!namaUser.isEmpty() &&
+                    umurUser != 0 &&
+                    bb != 0 &&
+                    tb != 0 &&
+                    !riwayatPenyakitUser.isEmpty()) {
+                registerPresenter.getUser(namaUser, umurUser, bb, tb, riwayatPenyakitUser);
+            }else{
+                Toast.makeText(RegisterActivity.this, "Isi Semua Field", Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(this, "Gagal", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

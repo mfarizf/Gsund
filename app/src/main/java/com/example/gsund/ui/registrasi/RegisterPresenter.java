@@ -9,14 +9,14 @@ import com.example.gsund.utils.HitungKebutuhan;
 
 import io.realm.Realm;
 
-public class RegisterPresenter {
+class RegisterPresenter {
     private final Context context;
     private final RegisterCallback registerCallback;
     private final Realm realm;
     private final PreferencesManager preferencesManager;
     private HitungKebutuhan hitungKebutuhan;
 
-    public RegisterPresenter(Context context, RegisterCallback registerCallback, Realm realm, PreferencesManager preferencesManager) {
+    RegisterPresenter(Context context, RegisterCallback registerCallback, Realm realm, PreferencesManager preferencesManager) {
         this.context = context;
         this.registerCallback = registerCallback;
         this.realm = realm;

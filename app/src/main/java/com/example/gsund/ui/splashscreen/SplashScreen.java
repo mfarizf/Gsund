@@ -17,10 +17,13 @@ import com.example.gsund.ui.registrasi.RegisterActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity implements SplashCallback {
     PreferencesManager preferencesManager;
     Animation anim;
+    Realm realm;
 
     @BindView(R.id.logo) ImageView logoSplash;
 
@@ -30,27 +33,28 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         ButterKnife.bind(this);
         preferencesManager = new PreferencesManager(this);
+
+        Realm.init(SplashScreen.this);
+        RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+        realm = Realm.getInstance(configuration);
+
+        SplashPresenter splashPresenter = new SplashPresenter(SplashScreen.this, this, realm, preferencesManager);
+
         anim = AnimationUtils.loadAnimation(this,R.anim.logoanim);
         logoSplash.startAnimation(anim);
-        new Handler().postDelayed(() -> {
-            if (preferencesManager.getFirst()){
-                startActivity(new Intent(SplashScreen.this, Intro.class));
-                finish();
-            }else{
-                    if (preferencesManager.getId() != null){
-                        startActivity(new Intent(SplashScreen.this,MainActivity.class));
-                        finish();
-                    }else{
-                        startActivity(new Intent(SplashScreen.this, RegisterActivity.class));
-                        finish();
-                    }
-            }
-        },3000);
+
+        new Handler().postDelayed(splashPresenter::checkUser
+        ,3000);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         new Handler().removeCallbacksAndMessages(null);
+    }
+
+    @Override
+    public void onStartActivity(Intent intent) {
+        startActivity(intent);
     }
 }

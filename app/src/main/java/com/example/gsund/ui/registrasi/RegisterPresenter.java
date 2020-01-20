@@ -1,6 +1,7 @@
 package com.example.gsund.ui.registrasi;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.gsund.data.db.helper.UserHelper;
 import com.example.gsund.data.db.model.UserModel;
@@ -35,10 +36,14 @@ class RegisterPresenter {
         UserHelper userHelper = new UserHelper(realm);
         userHelper.save(userModel);
 
-        preferencesManager.setBMI(hitungKebutuhan.hitungBMI(tb,bb));
+        hitungKebutuhan = new HitungKebutuhan();
+
 //        preferencesManager.setBMR(hitungKebutuhan.hitungBMR());
         preferencesManager.setFirst(false);
         preferencesManager.setId(userModel.getId());
+        double bmi = Double.parseDouble(String.valueOf(bb)) /( ((Double.parseDouble(String.valueOf(tb)))/100)*((Double.parseDouble(String.valueOf(tb)))/100) );
+        Log.d("BMI", "ku "+bmi +" "+ userModel.getBeratBadan() + " " +userModel.getTinggiBadan());
+//        preferencesManager.setBMI(bmi);
 
         registerCallback.onSuccessRegister();
 

@@ -7,35 +7,47 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.developer.kalert.KAlertDialog;
 import com.example.gsund.R;
+import com.example.gsund.data.db.helper.UserHelper;
+import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menumakan.DetailMakanan;
 import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
+import com.example.gsund.ui.registrasi.RegisterActivity;
 import com.example.gsund.utils.RecyclerOnTouchListener;
 import com.example.gsund.utils.RecyclerViewClickListener;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.option)
     DiscreteScrollView discreteScrollView;
     @BindView(R.id.recycle_tips)
     RecyclerView recyclerTips;
+    @BindView(R.id.sapaan)
+    TextView nama;
 
+    List<UserModel> list = new ArrayList<>();
+    UserHelper userHelper;
     PreferencesManager preferencesManager;
+    Realm realm;
 
     private List<ItemOption> item = Arrays.asList(
             new ItemOption(1, "Food", "You're Choose Food", R.drawable.food),
@@ -48,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         preferencesManager = new PreferencesManager(this);
+
+        Realm.init(MainActivity.this);
+        RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+        realm = Realm.getInstance(configuration);
+
+        userHelper = new UserHelper(realm);
 
         OptionAdapter optionAdapter = new OptionAdapter(item);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
@@ -62,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerTips.setLayoutManager(layoutManager);
         recyclerTips.setAdapter(tipsAdapter);
+
+        list = userHelper.getUser(preferencesManager.getId());
+
+        nama.setText(list.get(0).getNama());
 
         discreteScrollView.addOnItemTouchListener(new RecyclerOnTouchListener(MainActivity.this, recyclerTips, new RecyclerViewClickListener() {
             @Override

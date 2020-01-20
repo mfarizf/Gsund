@@ -56,5 +56,6 @@ public class SplashScreen extends AppCompatActivity implements SplashCallback {
     @Override
     public void onStartActivity(Intent intent) {
         startActivity(intent);
+        finish();
     }
 }

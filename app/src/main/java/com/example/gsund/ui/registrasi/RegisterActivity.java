@@ -57,11 +57,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterCallb
 
     @OnClick(R.id.btn_daftar)
     public void daftar(View view){
-        if  (nama.getText().toString().equals(null) &&
-                umur.getText().toString().equals(null) &&
-                        beratBadan.getText().toString().equals(null) &&
-                                tinggiBadan.getText().toString().equals(null) &&
-                                        riwayatPenyakit.getText().toString().equals(null)){
+        if  (!nama.getText().toString().equals("") &&
+                !umur.getText().toString().equals("") &&
+                        !beratBadan.getText().toString().equals("") &&
+                                !tinggiBadan.getText().toString().equals("") &&
+                                        !riwayatPenyakit.getText().toString().equals("")){
 
             String namaUser = nama.getText().toString();
             int umurUser = Integer.parseInt(umur.getText().toString());

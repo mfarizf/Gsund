@@ -6,10 +6,10 @@ public class HitungKebutuhan {
 
     }
 
-    public int hitungBMI(double tinggiBadan, double beratBadan){
-        double hasil;
-        hasil = beratBadan/ tinggiBadan*tinggiBadan;
-        return Integer.parseInt(String.valueOf(hasil));
+    public int hitungBMI(int tinggiBadan, int beratBadan){
+        int hasil;
+        hasil = beratBadan / ((tinggiBadan/10)*(tinggiBadan/10));
+        return hasil;
     }
 
     public double hitungBMR(String jenkel, double tinggiBadan, double beratBadan,int usia,double levelAktifitas){

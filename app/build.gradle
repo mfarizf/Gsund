@@ -40,8 +40,8 @@ dependencies {
 
     // android support libraries
     implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
-    implementation "androidx.recyclerview:recyclerview:$rootProject.supportLibraryVersion"
-    implementation "androidx.cardview:cardview:$rootProject.supportLibraryVersion"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     implementation "com.google.android.material:material:$rootProject.supportLibraryVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
 

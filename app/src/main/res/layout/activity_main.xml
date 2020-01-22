@@ -117,7 +117,7 @@
                 android:orientation="horizontal"
                 android:layout_below="@+id/tv_menu_lainnya">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="112dp"
                     android:background="@color/colorPrimary"
@@ -151,8 +151,8 @@
                             android:layout_height="20dp"/>
                     </RelativeLayout>
 
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="112dp"
                     android:layout_marginTop="8dp"
@@ -183,8 +183,8 @@
                             android:layout_height="20dp"/>
                     </RelativeLayout>
 
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="112dp"
                     android:background="@color/colorPrimary"
@@ -216,7 +216,7 @@
                     </RelativeLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

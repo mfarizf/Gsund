@@ -6,16 +6,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gsund.R;
-import com.example.gsund.adapter.SectionsPagerAdapter;
 import com.example.gsund.data.prefs.PreferencesManager;
-import com.google.android.material.tabs.TabLayout;
 
 
 /**

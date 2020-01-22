@@ -1,4 +1,4 @@
-package com.example.gsund.adapter;
+package com.example.gsund.ui.main.adapter;
 import android.content.Context;
 
 import androidx.annotation.NonNull;

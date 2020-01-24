@@ -5,6 +5,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="history">Histori</string>
     <string name="home">Home</string>
+    <string name="tab_1">Profile</string>
+    <string name="tab_2">Progress</string>
     <string name="profile">Profile</string>
     <string name="selamat_datang">Selamat Datang</string>
     <string name="motto">Mulai Sehatmu Sekarang Juga</string>

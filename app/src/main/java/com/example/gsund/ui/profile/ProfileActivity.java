@@ -6,7 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.gsund.R;
-import com.example.gsund.ui.main.adapter.SectionsPagerAdapter;
+import com.example.gsund.ui.profile.adapter.SectionsPagerAdapter;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.google.android.material.tabs.TabLayout;
 

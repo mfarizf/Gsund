@@ -21,19 +21,13 @@
 
         <SearchView
             android:layout_width="match_parent"
+
             android:layout_height="match_parent" />
-        <EditText
-            android:paddingStart="10dp"
-            android:background="#FFF"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Cari Makanan"
-            android:layout_marginStart="50dp"
-            android:singleLine="true"
-            android:gravity="center_vertical"/>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/rv_makanan"
         tools:listitem="@layout/item_makanan"
         android:layout_width="match_parent"
@@ -43,5 +37,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintVertical_bias="0.031"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_30sdp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import com.example.gsund.R;
 import com.example.gsund.data.db.helper.UserHelper;
 import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
+import com.example.gsund.ui.alarm.AlarmReminder;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menumakan.DetailMakanan;
@@ -125,11 +126,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    public void item_food(View view) {
-        Intent i = new Intent(MainActivity.this, MenuMakan.class);
-        startActivity(i);
+    @OnClick(R.id.item_food)
+    void itemFood(){
+        startActivity(new Intent(MainActivity.this, MenuMakan.class));
     }
+
 
 
 }

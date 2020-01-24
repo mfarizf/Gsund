@@ -1,6 +1,7 @@
 package com.example.gsund.ui.menumakan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +33,8 @@ public class KumpulanMakan extends AppCompatActivity {
 
         rvMakanan = findViewById(R.id.rv_makanan);
         rvMakanan.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(KumpulanMakan.this);
-        rvMakanan.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(KumpulanMakan.this,2);
+        rvMakanan.setLayoutManager(gridLayoutManager);
 
 
         ApiInterface service = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);

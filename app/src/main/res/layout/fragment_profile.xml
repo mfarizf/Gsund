@@ -49,7 +49,7 @@
         android:textStyle="bold"
         android:text="Nama"
         app:layout_constraintStart_toStartOf="@id/cv_profile"
-        app:layout_constraintTop_toBottomOf="@id/cv_profile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"

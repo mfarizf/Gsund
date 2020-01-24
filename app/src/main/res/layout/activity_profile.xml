@@ -107,7 +107,9 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/button_rounded_red"
         app:tabTextColor="@color/putih" />
 
     <androidx.viewpager.widget.ViewPager
@@ -117,9 +119,6 @@
         android:layout_height="0dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="215dp"/>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

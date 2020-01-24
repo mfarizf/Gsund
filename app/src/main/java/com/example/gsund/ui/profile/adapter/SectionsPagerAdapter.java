@@ -1,4 +1,4 @@
-package com.example.gsund.ui.main.adapter;
+package com.example.gsund.ui.profile.adapter;
 import android.content.Context;
 
 import androidx.annotation.NonNull;

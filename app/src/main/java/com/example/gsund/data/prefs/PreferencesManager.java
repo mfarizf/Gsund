@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import com.example.gsund.root.AppConstant;
 
+import java.text.DecimalFormat;
+
 public class PreferencesManager {
     private Context context;
 
@@ -36,27 +38,35 @@ public class PreferencesManager {
         edit.apply();
     }
 
-    public Integer getBMR(){
+    public String getBMR(){
         SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
-        return sharedPreferences.getInt("bmr",0);
+        return sharedPreferences.getString("bmr",null);
     }
 
-    public void setBMR(Integer bmr){
+    public void setBMR(double bmr){
         SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
         SharedPreferences.Editor edit = sharedPreferences.edit();
-        edit.putInt("bmr", bmr);
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formatted = df.format(bmr);
+
+        edit.putString("bmr", formatted);
         edit.apply();
     }
 
-    public Integer getBMI(){
+    public String getBMI(){
         SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
-        return sharedPreferences.getInt("bmi",0);
+        return sharedPreferences.getString("bmi", null);
     }
 
-    public void setBMI(Integer bmi){
+    public void setBMI(double bmi){
         SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
         SharedPreferences.Editor edit = sharedPreferences.edit();
-        edit.putInt("bmi", bmi);
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formatted = df.format(bmi);
+
+        edit.putString("bmi", formatted);
         edit.apply();
     }
 

@@ -41,9 +41,9 @@ class RegisterPresenter {
 //        preferencesManager.setBMR(hitungKebutuhan.hitungBMR());
         preferencesManager.setFirst(false);
         preferencesManager.setId(userModel.getId());
-        double bmi = Double.parseDouble(String.valueOf(bb)) /( ((Double.parseDouble(String.valueOf(tb)))/100)*((Double.parseDouble(String.valueOf(tb)))/100) );
-        Log.d("BMI", "ku "+bmi +" "+ userModel.getBeratBadan() + " " +userModel.getTinggiBadan());
-//        preferencesManager.setBMI(bmi);
+        double bmi = hitungKebutuhan.hitungBMI(tb,bb);
+        Log.d("BMI", String.valueOf(bmi));
+        preferencesManager.setBMI(bmi);
 
         registerCallback.onSuccessRegister();
 

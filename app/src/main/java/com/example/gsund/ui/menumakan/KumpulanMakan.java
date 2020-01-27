@@ -44,14 +44,18 @@ public class KumpulanMakan extends AppCompatActivity {
         call.enqueue(new Callback<MakananResponse>() {
             @Override
             public void onResponse(Call<MakananResponse> call, Response<MakananResponse> response) {
-                MakananResponse makananResponse = response.body();
-                makananAdapter = new MakananAdapter(makananResponse.getValues());
-                rvMakanan.setAdapter(makananAdapter);
+                if (response.isSuccessful()) {
+                    MakananResponse makananResponse = response.body();
+                    makananAdapter = new MakananAdapter(makananResponse.getValues());
+                    rvMakanan.setAdapter(makananAdapter);
+                }else{
+                    Toast.makeText(KumpulanMakan.this, "Respon Salah", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<MakananResponse> call, Throwable t) {
-                Toast.makeText(KumpulanMakan.this, "Sesuatu salah!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(KumpulanMakan.this, "Harap Cek koneksi Internet!", Toast.LENGTH_SHORT).show();
             }
         });
     }

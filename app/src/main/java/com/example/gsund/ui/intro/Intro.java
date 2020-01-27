@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.intro.fragment.intro1;
 import com.example.gsund.ui.intro.fragment.intro2;
+import com.example.gsund.ui.intro.fragment.intro3;
 import com.example.gsund.ui.registrasi.RegisterActivity;
 import com.github.paolorotolo.appintro.AppIntro2;
 
@@ -26,6 +27,8 @@ public class Intro extends AppIntro2 {
 
         addSlide(new intro1());
         addSlide(new intro2());
+        addSlide(new intro3());
+
         setIndicatorColor(Color.parseColor("#1B1B41"), Color.parseColor("#1B1B41"));
         showStatusBar(false);
         showSkipButton(true);

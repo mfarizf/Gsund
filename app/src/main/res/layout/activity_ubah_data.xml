@@ -8,6 +8,18 @@
     android:orientation="vertical"
     tools:context=".ui.profile.ProfileActivity">
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/notosans_bold"
+        android:text="@string/profile_jenis_kelamin"
+        android:textColor="#111"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <ImageView
         android:id="@+id/image_backdrop"
@@ -51,7 +63,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_margin="30dp"
-                android:src="@drawable/pic_sample_1" />
+                android:src="@drawable/img_random_face" />
 
             <TextView
                 android:id="@+id/email_profile"
@@ -60,7 +72,7 @@
                 android:layout_below="@id/name_profile"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_toEndOf="@id/picture_profile"
-                android:text="@string/sample_email" />
+                android:text="email" />
 
             <TextView
                 android:id="@+id/name_profile"
@@ -70,20 +82,34 @@
                 android:layout_toEndOf="@id/picture_profile"
                 android:fontFamily="@font/notosans_bold"
                 android:layout_marginTop="40dp"
-                android:text="@string/sample_name"
+                android:text="Nama"
                 android:textSize="15sp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
+    <EditText
+        android:id="@+id/edtText_bb"
+        android:layout_margin="@dimen/_20sdp"
+        android:hint="Berat Badan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cv_profile" />
+
+    <EditText
+        android:id="@+id/edtText_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:hint="Tinggi Badan"
+        app:layout_constraintTop_toBottomOf="@+id/edtText_bb" />
     <Button
-        android:id="@+id/btn_ubahdata"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:background="@drawable/button_rounded_red"
         android:layout_marginBottom="16dp"
-        android:text="Ubah Data"
+        android:text="Simpan Data"
         android:textAllCaps="false"
         android:fontFamily="@font/notosans_bold"
         android:textColor="@color/putih"
@@ -91,23 +117,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.tabs.TabLayout
-        app:layout_constraintTop_toBottomOf="@id/cv_profile"
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/button_rounded_red"
-        app:tabTextColor="@color/putih" />
 
-    <androidx.viewpager.widget.ViewPager
-        app:layout_constraintTop_toBottomOf="@id/tabs"
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="215dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

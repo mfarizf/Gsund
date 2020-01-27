@@ -40,4 +40,10 @@
     <string name="nilai_ideal">18.50-24.99</string>
     <string name="nilai_gemuk">25.00-29.99</string>
     <string name="nilai_obesitas"><![CDATA[>30.00]]></string>
+
+    <string-array name="item_intensitas_or">
+        <item>Jarang</item>
+        <item>Normal</item>
+        <item>Sering</item>
+    </string-array>
 </resources>

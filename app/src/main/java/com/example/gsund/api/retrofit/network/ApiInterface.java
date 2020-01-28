@@ -1,7 +1,10 @@
 package com.example.gsund.api.retrofit.network;
 
-import com.example.gsund.api.retrofit.DataList;
+import com.example.gsund.api.retrofit.response.DietResponse;
 import com.example.gsund.api.retrofit.response.MakananResponse;
+import com.example.gsund.api.retrofit.response.OlahragaResponse;
+import com.example.gsund.api.retrofit.response.PenyakitResponse;
+import com.example.gsund.api.retrofit.response.TipsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,13 +16,17 @@ public interface ApiInterface {
 
         //Dapatkan Olaharaga
         @GET("sports")
-        Call<DataList> getListOlahraga();
+        Call<OlahragaResponse> getListOlahraga();
 
         //Dapatkan Diet
         @GET("diets")
-        Call<DataList> getListDiet();
+        Call<DietResponse> getListDiet();
 
         //Dapatkan Penyakit
         @GET("diseases")
-        Call<DataList> getListPenyakit();
+        Call<PenyakitResponse> getListPenyakit();
+
+        //Dapatkan Tips
+        @GET("tips")
+        Call<TipsResponse> getListTips();
 }

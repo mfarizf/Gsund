@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.developer.kalert.KAlertDialog;
 import com.example.gsund.R;
@@ -21,6 +27,7 @@ import com.example.gsund.ui.menumakan.DetailMakanan;
 import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.ui.registrasi.RegisterActivity;
+import com.example.gsund.utils.AlarmNotification;
 import com.example.gsund.utils.RecyclerOnTouchListener;
 import com.example.gsund.utils.RecyclerViewClickListener;
 import com.yarolegovich.discretescrollview.DSVOrientation;
@@ -48,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
     List<UserModel> list = new ArrayList<>();
     UserHelper userHelper;
     PreferencesManager preferencesManager;
+    AlarmNotification alarm = new AlarmNotification();
     Realm realm;
-
+    private  int JOB_ID = 10;
     private List<ItemOption> item = Arrays.asList(
             new ItemOption(1, "Food", "You're Choose Food", R.drawable.food),
             new ItemOption(2, "Diet", "You're Choose Diet", R.drawable.diet),
@@ -123,6 +131,63 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.img_profile)
     void profile(){
         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+    }
+
+    @OnClick(R.id.temporary)
+    void click(){
+
+        startJob();
+
+    }
+
+    private void startJob(){
+        if (JobisRunning(this)){
+            Toast.makeText(this, R.string.job_start, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        ComponentName mServiceComponent =  new ComponentName(this,AlarmNotification.class);
+        JobInfo.Builder builder =  new JobInfo.Builder(JOB_ID,mServiceComponent);
+        builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
+        builder.setRequiresDeviceIdle(false);
+        builder.setRequiresCharging(false);
+
+        String title = "Minum Air";
+        String message = "Jangan Lupa Minum Air 2 Liter/Hari !";
+        int  notifID = 100;
+        alarm.showNotification(getApplicationContext(),title,message,notifID);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            builder.setPeriodic(900000);
+        }else {
+            builder.setPeriodic(180000);
+        }
+
+
+
+    }
+
+    private boolean JobisRunning(Context context){
+        boolean isScheduled = false;
+        JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+
+        if(scheduler != null){
+            for (JobInfo jobInfo : scheduler.getAllPendingJobs()){
+                if(jobInfo.getId() == JOB_ID){
+                    isScheduled = true;
+                    break;
+                }
+            }
+        }
+        return isScheduled;
+
+    }
+
+
+    private void cancelJob(){
+        JobScheduler tm = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        tm.cancel(JOB_ID);
+        Toast.makeText(this, "Job Service canceled", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
 

@@ -68,7 +68,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="@string/masukan_nama_panggilan">
+                android:hint="@string/masukan_nama">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/register_input_nama_panggilan"
                     android:layout_width="match_parent"

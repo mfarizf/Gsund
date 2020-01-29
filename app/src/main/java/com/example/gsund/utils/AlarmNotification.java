@@ -39,10 +39,9 @@ public class AlarmNotification extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,CHANNEL_ID)
                 .setContentTitle(title)
-                .setSmallIcon(R.drawable.appintro_indicator_dot_grey)
+                .setSmallIcon(R.drawable.logo)
                 .setContentText(message)
                 .setColor(ContextCompat.getColor(context,R.color.biru_langit))
-                .setStyle(new NotificationCompat.BigPictureStyle())
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)

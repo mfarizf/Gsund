@@ -20,10 +20,12 @@ import butterknife.ButterKnife;
 
 public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananViewHolder> {
 
-    private ArrayList<MakananAPI> listMakanan;
+    private ArrayList<MakananAPI> mData = new ArrayList<MakananAPI>();
 
-    public MakananAdapter(ArrayList<MakananAPI> listMakanan){
-        this.listMakanan = listMakanan;
+    public void setData(ArrayList<MakananAPI> items) {
+        mData.clear();
+        mData.addAll(items);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -37,16 +39,16 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
     @Override
     public void onBindViewHolder(@NonNull MakananAdapter.MakananViewHolder holder, int position) {
         Glide.with(holder.itemView.getContext())
-                .load(listMakanan.get(position).getGambar())
+                .load(mData.get(position).getGambar())
                 .into(holder.imgMakanan);
 
-        holder.tvNama.setText(listMakanan.get(position).getNama());
-        holder.tvJenis.setText(listMakanan.get(position).getJenis());
+        holder.tvNama.setText(mData.get(position).getNama());
+        holder.tvJenis.setText(mData.get(position).getJenis());
     }
 
     @Override
     public int getItemCount() {
-        return listMakanan.size();
+        return mData.size();
     }
 
     class MakananViewHolder extends RecyclerView.ViewHolder{

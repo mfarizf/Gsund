@@ -77,15 +77,16 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <Button
+        android:id="@+id/btn_mulai_diet"
         android:textAllCaps="false"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Mulai Diet"
+        android:text="Beli Makanan"
         android:textColor="#FFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_rounded_red"
+        android:background="#03AC0E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

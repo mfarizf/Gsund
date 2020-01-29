@@ -136,10 +136,15 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.temporary)
     void click(){
 
-        startJob();
-
+        String title = "Minum Air";
+        String message = "Jangan Lupa Minum Air 2 Liter/Hari !";
+        int  notifID = 1;
+        AlarmNotification alarmNotification = new AlarmNotification();
+        alarmNotification.showNotification(getApplicationContext(),title,message,notifID);
     }
 
+
+    //for schedulede notification
     private void startJob(){
         if (JobisRunning(this)){
             Toast.makeText(this, R.string.job_start, Toast.LENGTH_SHORT).show();
@@ -195,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
     void itemFood(){
         startActivity(new Intent(MainActivity.this, MenuMakan.class));
     }
-
 
 
 }

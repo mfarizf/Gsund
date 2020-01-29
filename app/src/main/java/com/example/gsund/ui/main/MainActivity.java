@@ -9,24 +9,27 @@ import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.developer.kalert.KAlertDialog;
 import com.example.gsund.R;
 import com.example.gsund.data.db.helper.UserHelper;
 import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
-import com.example.gsund.ui.alarm.AlarmReminder;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menumakan.DetailMakanan;
 import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
-import com.example.gsund.ui.registrasi.RegisterActivity;
 import com.example.gsund.utils.AlarmNotification;
 import com.example.gsund.utils.RecyclerOnTouchListener;
 import com.example.gsund.utils.RecyclerViewClickListener;
@@ -41,6 +44,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -51,11 +55,20 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerTips;
     @BindView(R.id.sapaan)
     TextView nama;
+    @BindView(R.id.img_profile)
+    CircleImageView circleImageView;
+    @BindView(R.id.img_soup)
+    ImageView imageFood;
+    @BindView(R.id.img_run)
+    ImageView imageSport;
+    @BindView(R.id.img_brokoli)
+    ImageView imageDiet;
 
     List<UserModel> list = new ArrayList<>();
     UserHelper userHelper;
     PreferencesManager preferencesManager;
     AlarmNotification alarm = new AlarmNotification();
+    Animation anim;
     Realm realm;
     private  int JOB_ID = 10;
     private List<ItemOption> item = Arrays.asList(
@@ -75,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         realm = Realm.getInstance(configuration);
 
         userHelper = new UserHelper(realm);
+        anim = AnimationUtils.loadAnimation(this,R.anim.logoanim);
 
         OptionAdapter optionAdapter = new OptionAdapter(item);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
@@ -93,6 +107,28 @@ public class MainActivity extends AppCompatActivity {
         list = userHelper.getUser(preferencesManager.getId());
 
         nama.setText(list.get(0).getNama());
+
+//        circleImageView.setImageResource(R.drawable.img_random_face);
+//        imageDiet.setImageResource(R.drawable.img_ic_diet);
+//        imageSport.setImageResource(R.drawable.img_i_sport);
+//        imageFood.setImageResource(R.drawable.img_ic_food);
+        circleImageView.startAnimation(anim);
+        imageFood.startAnimation(anim);
+        imageSport.startAnimation(anim);
+        imageDiet.startAnimation(anim);
+
+        Glide.with(this)
+                    .load(R.drawable.img_random_face)
+                    .into(circleImageView);
+        Glide.with(this)
+                     .load(R.drawable.img_ic_food)
+                     .into(imageFood);
+        Glide.with(this)
+                     .load(R.drawable.img_i_sport)
+                     .into(imageSport);
+        Glide.with(this)
+                     .load(R.drawable.img_ic_diet)
+                     .into(imageDiet);
 
         discreteScrollView.addOnItemTouchListener(new RecyclerOnTouchListener(MainActivity.this, recyclerTips, new RecyclerViewClickListener() {
             @Override
@@ -198,6 +234,16 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.item_food)
     void itemFood(){
+        startActivity(new Intent(MainActivity.this, MenuMakan.class));
+    }
+
+    @OnClick(R.id.item_sport)
+    void itemSport(){
+        startActivity(new Intent(MainActivity.this, MenuMakan.class));
+    }
+
+    @OnClick(R.id.item_diet)
+    void itemDiet(){
         startActivity(new Intent(MainActivity.this, MenuMakan.class));
     }
 

@@ -31,4 +31,8 @@ public class SetupData  {
         return olahragaModels;
     }
 
+    public void LoadData(){
+
+    }
+
 }

@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.gsund.R;
-import com.example.gsund.data.db.helper.UserHelper;
-import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.MainActivity;
 

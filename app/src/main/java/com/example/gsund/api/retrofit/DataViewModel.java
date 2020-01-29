@@ -19,6 +19,8 @@ import com.example.gsund.api.retrofit.response.OlahragaResponse;
 import com.example.gsund.api.retrofit.response.PenyakitResponse;
 import com.example.gsund.api.retrofit.response.TipsResponse;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -49,7 +51,7 @@ public class DataViewModel extends ViewModel {
 
         call.enqueue(new Callback<MakananResponse>() {
             @Override
-            public void onResponse(Call<MakananResponse> call, Response<MakananResponse> response) {
+            public void onResponse(@NotNull Call<MakananResponse> call, @NotNull Response<MakananResponse> response) {
                 if (response.isSuccessful()) {
                     makananResponse = response.body();
                     if (makananResponse != null) {
@@ -63,7 +65,7 @@ public class DataViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<MakananResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<MakananResponse> call, @NotNull Throwable t) {
                 t.printStackTrace();
             }
         });
@@ -81,7 +83,7 @@ public class DataViewModel extends ViewModel {
 
         call.enqueue(new Callback<OlahragaResponse>() {
             @Override
-            public void onResponse(Call<OlahragaResponse> call, Response<OlahragaResponse> response) {
+            public void onResponse(@NotNull Call<OlahragaResponse> call, @NotNull Response<OlahragaResponse> response) {
                 if (response.isSuccessful()) {
                     olahragaResponse = response.body();
                     if (olahragaResponse != null) {
@@ -95,7 +97,7 @@ public class DataViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<OlahragaResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<OlahragaResponse> call, @NotNull Throwable t) {
                 t.printStackTrace();
             }
         });
@@ -113,7 +115,7 @@ public class DataViewModel extends ViewModel {
 
         call.enqueue(new Callback<PenyakitResponse>() {
             @Override
-            public void onResponse(Call<PenyakitResponse> call, Response<PenyakitResponse> response) {
+            public void onResponse(@NotNull Call<PenyakitResponse> call, @NotNull Response<PenyakitResponse> response) {
                 if (response.isSuccessful()) {
                     penyakitResponse = response.body();
                     if (penyakitResponse != null) {
@@ -127,7 +129,7 @@ public class DataViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<PenyakitResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<PenyakitResponse> call, @NotNull Throwable t) {
                 t.printStackTrace();
             }
         });
@@ -145,7 +147,7 @@ public class DataViewModel extends ViewModel {
 
         call.enqueue(new Callback<DietResponse>() {
             @Override
-            public void onResponse(Call<DietResponse> call, Response<DietResponse> response) {
+            public void onResponse(@NotNull Call<DietResponse> call, @NotNull Response<DietResponse> response) {
                 if (response.isSuccessful()) {
                     dietResponse = response.body();
                     if (dietResponse != null) {
@@ -159,7 +161,7 @@ public class DataViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<DietResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<DietResponse> call, @NotNull Throwable t) {
                 t.printStackTrace();
             }
         });
@@ -177,7 +179,7 @@ public class DataViewModel extends ViewModel {
 
         call.enqueue(new Callback<TipsResponse>() {
             @Override
-            public void onResponse(Call<TipsResponse> call, Response<TipsResponse> response) {
+            public void onResponse(@NotNull Call<TipsResponse> call, @NotNull Response<TipsResponse> response) {
                 if (response.isSuccessful()) {
                     tipsResponse = response.body();
                     if (tipsResponse != null) {
@@ -191,7 +193,7 @@ public class DataViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<TipsResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<TipsResponse> call, @NotNull Throwable t) {
                 t.printStackTrace();
             }
         });

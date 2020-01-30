@@ -8,7 +8,7 @@
     tools:context="com.example.gsund.ui.menumakan.DetailMakanan">
 
     <ImageView
-        android:id="@+id/imgMenu"
+        android:id="@+id/img_makanan"
         android:layout_width="match_parent"
         android:layout_height="272dp"
         android:scaleType="fitStart"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_judul"
+            android:id="@+id/tv_nama_makanan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -55,7 +55,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_detail"
+            android:id="@+id/tv_kalori_makanan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -77,7 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <Button
-        android:id="@+id/btn_mulai_diet"
+        android:id="@+id/btn_beli"
         android:textAllCaps="false"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="20dp"

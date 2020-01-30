@@ -1,5 +1,6 @@
 package com.example.gsund.ui.menumakan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -45,6 +46,14 @@ public class KumpulanMakan extends AppCompatActivity {
         makananAdapter.notifyDataSetChanged();
         rvMakanan.setAdapter(makananAdapter);
 
+        // Set Listener Adapter
+        makananAdapter.setOnItemClickCallback(new MakananAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(MakananAPI data) {
+                moveToDetailActivity(data);
+            }
+        });
+
         showListMakanan();
 
     }
@@ -73,5 +82,13 @@ public class KumpulanMakan extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void moveToDetailActivity(MakananAPI data) {
+        Intent detailMakanan = new Intent(KumpulanMakan.this, DetailMakanan.class);
+        detailMakanan.putExtra("nama_makanan", data.getNama());
+        detailMakanan.putExtra("kalori_makanan", data.getKalori());
+        detailMakanan.putExtra("jenis", data.getJenis());
+        startActivity(detailMakanan);
     }
 }

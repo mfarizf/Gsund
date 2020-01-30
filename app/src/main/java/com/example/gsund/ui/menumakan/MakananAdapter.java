@@ -21,6 +21,11 @@ import butterknife.ButterKnife;
 public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananViewHolder> {
 
     private ArrayList<MakananAPI> mData = new ArrayList<MakananAPI>();
+    private OnItemClickCallback onItemClickCallback;
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
 
     public void setData(ArrayList<MakananAPI> items) {
         mData.clear();
@@ -44,6 +49,13 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
 
         holder.tvNama.setText(mData.get(position).getNama());
         holder.tvJenis.setText(mData.get(position).getJenis());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(mData.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -62,5 +74,9 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(MakananAPI data);
     }
 }

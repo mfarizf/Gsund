@@ -2,6 +2,7 @@ package com.example.gsund.ui.menumakan;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +48,11 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
 
     private String action, judul, subjudul, gambar, deskripsi;
 
+    // Sound
+    SoundPool sp;
+    int soundId;
+    boolean spLoaded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +96,21 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
         } else {
             Toast.makeText(this, "Opps! Kayaknya ada kesalahan nih!", Toast.LENGTH_SHORT).show();
         }
+
+        // Sound
+        sp = new SoundPool.Builder()
+                .setMaxStreams(10)
+                .build();
+        sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                if (status == 0) {
+                    spLoaded = true;
+                } else {
+                    Toast.makeText(DetailData.this, "Gagal load", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        soundId = sp.load(this, R.raw.tokopedia, 1);
     }
 
     @Override
@@ -117,7 +138,9 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
                 Uri.parse("https://www.tokopedia.com/search?st=product&q=" + keyword)
         );
         startActivity(browserIntent);
-
+        if (spLoaded) {
+            sp.play(soundId, 1f, 1f, 0, 0, 1f);
+        }
         Toast.makeText(this, "Mencari " + keyword + " di Tokopedia! ^_^", Toast.LENGTH_SHORT).show();
     }
 

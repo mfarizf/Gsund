@@ -60,17 +60,28 @@
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tv_deskripsi"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="35dp"
-        android:text="Lorem Ipsum sir dolor amet"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+        <TextView
+            android:id="@+id/tv_deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="35dp"
+            android:paddingBottom="20dp"
+            android:text="Lorem Ipsum sir dolor amet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+    </ScrollView>
 
     <Button
         android:id="@+id/btn_action"

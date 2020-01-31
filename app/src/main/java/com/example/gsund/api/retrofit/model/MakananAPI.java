@@ -15,7 +15,7 @@ public class MakananAPI {
     private int kalori;
     @SerializedName("gambar")
     private String gambar;
-    @SerializedName("deksripsi")
+    @SerializedName("deskripsi")
     private String deskripsi;
 
     // Constructornya

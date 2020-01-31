@@ -123,7 +123,7 @@ public class KumpulanData extends AppCompatActivity {
             detailMakanan.putExtra("gambar", data.getGambar());
             detailMakanan.putExtra("judul", data.getNama());
             detailMakanan.putExtra("subjudul", data.getJenis());
-            detailMakanan.putExtra("deskripsi", data.getKalori());
+            detailMakanan.putExtra("deskripsi", data.getDeskripsi());
             detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
             startActivity(detailMakanan);
         });

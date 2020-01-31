@@ -7,10 +7,17 @@ public class TipsAPI {
     private int id;
     @SerializedName("judul")
     private String judul;
-    @SerializedName("isi")
-    private String isi;
+    @SerializedName("deskripsi")
+    private String deskripsi;
     @SerializedName("gambar")
     private String gambar;
+
+    public TipsAPI(int id, String judul, String deskripsi, String gambar) {
+        this.id = id;
+        this.judul = judul;
+        this.deskripsi = deskripsi;
+        this.gambar = gambar;
+    }
 
     public int getId() {
         return id;
@@ -28,12 +35,12 @@ public class TipsAPI {
         this.judul = judul;
     }
 
-    public String getIsi() {
-        return isi;
+    public String getDeskripsi() {
+        return deskripsi;
     }
 
-    public void setIsi(String isi) {
-        this.isi = isi;
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 
     public String getGambar() {

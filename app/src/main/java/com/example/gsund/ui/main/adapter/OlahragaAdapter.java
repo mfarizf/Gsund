@@ -1,4 +1,4 @@
-package com.example.gsund.ui.menumakan;
+package com.example.gsund.ui.main.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,23 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.gsund.R;
-import com.example.gsund.api.retrofit.model.MakananAPI;
+import com.example.gsund.api.retrofit.model.OlahragaAPI;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananViewHolder> {
+public class OlahragaAdapter extends RecyclerView.Adapter<OlahragaAdapter.OlahragaViewHolder> {
 
-    private ArrayList<MakananAPI> mData = new ArrayList<MakananAPI>();
+    private ArrayList<OlahragaAPI> mData = new ArrayList<OlahragaAPI>();
     private OnItemClickCallback onItemClickCallback;
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    public void setData(ArrayList<MakananAPI> items) {
+    public void setData(ArrayList<OlahragaAPI> items) {
         mData.clear();
         mData.addAll(items);
         notifyDataSetChanged();
@@ -35,20 +35,20 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
 
     @NonNull
     @Override
-    public MakananAdapter.MakananViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater =  LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(R.layout.item_makanan,parent,false);
-        return new MakananAdapter.MakananViewHolder(v);
+    public OlahragaAdapter.OlahragaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v = inflater.inflate(R.layout.item_diet, parent, false);
+        return new OlahragaAdapter.OlahragaViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MakananAdapter.MakananViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OlahragaViewHolder holder, int position) {
         Glide.with(holder.itemView.getContext())
                 .load(mData.get(position).getGambar())
-                .into(holder.imgMakanan);
+                .into(holder.imgOlahraga);
 
         holder.tvNama.setText(mData.get(position).getNama());
-        holder.tvJenis.setText(mData.get(position).getJenis());
+        holder.tvDeskripsi.setText(mData.get(position).getDeskripsi());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,20 +63,21 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
         return mData.size();
     }
 
-    class MakananViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.img_makanan)
-        ImageView imgMakanan;
+    class OlahragaViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.img_olahraga)
+        ImageView imgOlahraga;
         @BindView(R.id.tv_nama)
         TextView tvNama;
-        @BindView(R.id.tv_jenis)
-        TextView tvJenis;
-        MakananViewHolder(@NonNull View itemView){
+        @BindView(R.id.tv_deskripsi)
+        TextView tvDeskripsi;
+
+        OlahragaViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(MakananAPI data);
+        void onItemClicked(OlahragaAPI data);
     }
 }

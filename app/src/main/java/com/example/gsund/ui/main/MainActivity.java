@@ -1,15 +1,10 @@
 package com.example.gsund.ui.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.developer.kalert.KAlertDialog;
 import com.example.gsund.R;
@@ -27,7 +26,7 @@ import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
-import com.example.gsund.ui.menumakan.DetailMakanan;
+import com.example.gsund.ui.menumakan.DetailData;
 import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.utils.AlarmNotification;
@@ -145,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerTips.addOnItemTouchListener(new RecyclerOnTouchListener(MainActivity.this, recyclerTips, new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                
-                startActivity(new Intent(MainActivity.this, DetailMakanan.class));
+
+                startActivity(new Intent(MainActivity.this, DetailData.class));
             }
 
             @Override

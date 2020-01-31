@@ -15,15 +15,18 @@ public class MakananAPI {
     private int kalori;
     @SerializedName("gambar")
     private String gambar;
+    @SerializedName("deksripsi")
+    private String deskripsi;
 
     // Constructornya
-    public MakananAPI(int id, String nama, String jenis, String kategori, int kalori, String gambar){
+    public MakananAPI(int id, String nama, String jenis, String kategori, int kalori, String gambar, String deskripsi) {
         this.id = id;
         this.nama = nama;
         this.jenis = jenis;
         this.kategori = kategori;
         this.kalori = kalori;
         this.gambar = gambar;
+        this.deskripsi = deskripsi;
     }
 
     public int getId() {
@@ -72,5 +75,13 @@ public class MakananAPI {
 
     public void setGambar(String gambar) {
         this.gambar = gambar;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 }

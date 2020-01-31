@@ -5,46 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context="com.example.gsund.ui.menumakan.DetailMakanan">
+    tools:context="com.example.gsund.ui.menumakan.DetailData">
 
     <ImageView
-        android:id="@+id/img_makanan"
+        android:id="@+id/img_gambar"
         android:layout_width="match_parent"
         android:layout_height="272dp"
         android:scaleType="fitStart"
-        tools:src="@drawable/img_diet_low_fat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_diet_low_fat" />
 
-        android:padding="10dp"
-        android:drawablePadding="10dp"
-        android:id="@+id/tv_nama_menu"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
-        android:fontFamily="@font/notosans_bold"
-        android:gravity="center_vertical"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_appintro_arrow_back_white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="200dp"
+        android:layout_marginRight="30dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_nama_makanan"
+            android:id="@+id/tv_judul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -55,7 +51,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_kalori_makanan"
+            android:id="@+id/tv_subjudul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -65,28 +61,28 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/tv_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:id="@+id/tv_deskripsi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="35dp"
         android:text="Lorem Ipsum sir dolor amet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <Button
-        android:id="@+id/btn_beli"
-        android:textAllCaps="false"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Beli Makanan"
-        android:textColor="#FFF"
+        android:id="@+id/btn_action"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="#03AC0E"
+        android:text="Beli Makanan"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

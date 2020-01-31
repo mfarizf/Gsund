@@ -11,12 +11,15 @@ public class OlahragaAPI {
     private String jenis;
     @SerializedName("gambar")
     private String gambar;
+    @SerializedName("deskripsi")
+    private String deskripsi;
 
-    public OlahragaAPI(int id, String nama, String jenis, String gambar){
+    public OlahragaAPI(int id, String nama, String jenis, String gambar, String deskripsi) {
         this.id = id;
         this.nama = nama;
         this.jenis = jenis;
         this.gambar = gambar;
+        this.deskripsi = deskripsi;
     }
 
     public int getId() {
@@ -49,5 +52,13 @@ public class OlahragaAPI {
 
     public void setGambar(String gambar) {
         this.gambar = gambar;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 }

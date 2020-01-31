@@ -108,7 +108,7 @@ public class DataViewModel extends ViewModel {
     }
 
     // Penyakit
-    public void setDataPenyakiit() {
+    public void setDataPenyakit() {
         ApiInterface service = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
 
         Call<PenyakitResponse> call = service.getListPenyakit();

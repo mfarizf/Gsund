@@ -27,6 +27,7 @@ import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menumakan.DetailData;
+import com.example.gsund.ui.menumakan.KumpulanData;
 import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.utils.AlarmNotification;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         list = userHelper.getUser(preferencesManager.getId());
 
-        nama.setText(list.get(0).getNama());
+        nama.setText(list.get(0).getNamaPanggilan());
 
 //        circleImageView.setImageResource(R.drawable.img_random_face);
 //        imageDiet.setImageResource(R.drawable.img_ic_diet);
@@ -233,18 +234,16 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.item_food)
     void itemFood(){
-        startActivity(new Intent(MainActivity.this, MenuMakan.class));
+        startActivity(new Intent(MainActivity.this, KumpulanData.class).putExtra("tipe", "makanan"));
     }
 
     @OnClick(R.id.item_sport)
-    void itemSport(){
-        startActivity(new Intent(MainActivity.this, MenuMakan.class));
+    void itemSport() {
+        startActivity(new Intent(MainActivity.this, KumpulanData.class).putExtra("tipe", "olahraga"));
     }
-
     @OnClick(R.id.item_diet)
-    void itemDiet(){
-        startActivity(new Intent(MainActivity.this, MenuMakan.class));
+    void itemDiet() {
+        startActivity(new Intent(MainActivity.this, KumpulanData.class).putExtra("tipe", "diet"));
     }
-
 
 }

@@ -66,27 +66,30 @@ public class KumpulanData extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(KumpulanData.this, 2);
         rvData.setLayoutManager(gridLayoutManager);
 
-        // Set Listener Adapter
-
-
-        showListDiet();
-
         // Get Data From Intent
-        Intent intent = getIntent();
+        Intent intent = KumpulanData.this.getIntent();
+//        Bundle bundle = intent.getExtras();
+//        assert bundle != null;
         String tipe = intent.getStringExtra(TIPE);
 
         // Logic If
         assert tipe != null;
-        if (tipe.equals(MAKANAN)) {
-            showListMakanan();
-        } else if (tipe.equals(OLAHRAGA)) {
-            showListOlahraga();
-        } else if (tipe.equals(PENYAKIT)) {
-            showListPenyakit();
-        } else if (tipe.equals(DIET)) {
-            showListDiet();
-        } else {
-            Toast.makeText(this, "Opps! sepertinya ada masalah nih!", Toast.LENGTH_SHORT).show();
+        switch (tipe) {
+            case MAKANAN:
+                showListMakanan();
+                break;
+            case OLAHRAGA:
+                showListOlahraga();
+                break;
+            case PENYAKIT:
+                showListPenyakit();
+                break;
+            case DIET:
+                showListDiet();
+                break;
+            default:
+                Toast.makeText(this, "Opps! sepertinya ada masalah nih!", Toast.LENGTH_SHORT).show();
+                break;
         }
 
     }
@@ -111,27 +114,21 @@ public class KumpulanData extends AppCompatActivity {
         showLoading(true);
 
         // Get Data apabila sudah ada
-        dataViewModel.getDataMakanan().observe(this, new Observer<ArrayList<MakananAPI>>() {
-            @Override
-            public void onChanged(ArrayList<MakananAPI> makananAPIS) {
-                if (makananAPIS != null) {
-                    makananAdapter.setData(makananAPIS);
-                    showLoading(false);
-                }
+        dataViewModel.getDataMakanan().observe(this, makananAPIS -> {
+            if (makananAPIS != null) {
+                makananAdapter.setData(makananAPIS);
+                showLoading(false);
             }
         });
 
-        makananAdapter.setOnItemClickCallback(new MakananAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(MakananAPI data) {
-                Intent detailMakanan = new Intent(KumpulanData.this, DetailData.class);
-                detailMakanan.putExtra("gambar", data.getGambar());
-                detailMakanan.putExtra("judul", data.getNama());
-                detailMakanan.putExtra("subjudul", "Kalori : " + data.getKalori());
-                detailMakanan.putExtra("deskripsi", data.getKalori());
-                detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
-                startActivity(detailMakanan);
-            }
+        makananAdapter.setOnItemClickCallback(data -> {
+            Intent detailMakanan = new Intent(KumpulanData.this, DetailData.class);
+            detailMakanan.putExtra("gambar", data.getGambar());
+            detailMakanan.putExtra("judul", data.getNama());
+            detailMakanan.putExtra("subjudul", "Kalori : " + data.getKalori());
+            detailMakanan.putExtra("deskripsi", data.getKalori());
+            detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
+            startActivity(detailMakanan);
         });
     }
 
@@ -147,27 +144,21 @@ public class KumpulanData extends AppCompatActivity {
         showLoading(true);
 
         // Get Data apabila sudah ada
-        dataViewModel.getDataPenyakit().observe(this, new Observer<ArrayList<PenyakitAPI>>() {
-            @Override
-            public void onChanged(ArrayList<PenyakitAPI> penyakitAPIS) {
-                if (penyakitAPIS != null) {
-                    penyakitAdapter.setData(penyakitAPIS);
-                    showLoading(false);
-                }
+        dataViewModel.getDataPenyakit().observe(this, penyakitAPIS -> {
+            if (penyakitAPIS != null) {
+                penyakitAdapter.setData(penyakitAPIS);
+                showLoading(false);
             }
         });
 
-        penyakitAdapter.setOnItemClickCallback(new PenyakitAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(PenyakitAPI data) {
-                Intent detailPenyakit = new Intent(KumpulanData.this, DetailData.class);
-                detailPenyakit.putExtra("gambar", data.getGambar());
-                detailPenyakit.putExtra("judul", data.getNama());
-                detailPenyakit.putExtra("subjudul", "Penyakit");
-                detailPenyakit.putExtra("deskripsi", data.getDeskripsi());
-                detailPenyakit.putExtra(EXTRA_ACTION, ACTION_PENYAKIT);
-                startActivity(detailPenyakit);
-            }
+        penyakitAdapter.setOnItemClickCallback(data -> {
+            Intent detailPenyakit = new Intent(KumpulanData.this, DetailData.class);
+            detailPenyakit.putExtra("gambar", data.getGambar());
+            detailPenyakit.putExtra("judul", data.getNama());
+            detailPenyakit.putExtra("subjudul", "Penyakit");
+            detailPenyakit.putExtra("deskripsi", data.getDeskripsi());
+            detailPenyakit.putExtra(EXTRA_ACTION, ACTION_PENYAKIT);
+            startActivity(detailPenyakit);
         });
     }
 
@@ -183,27 +174,21 @@ public class KumpulanData extends AppCompatActivity {
         showLoading(true);
 
         // Get Data apabila sudah ada
-        dataViewModel.getDataDiet().observe(this, new Observer<ArrayList<DietAPI>>() {
-            @Override
-            public void onChanged(ArrayList<DietAPI> dietAPIS) {
-                if (dietAPIS != null) {
-                    dietAdapter.setData(dietAPIS);
-                    showLoading(false);
-                }
+        dataViewModel.getDataDiet().observe(this, dietAPIS -> {
+            if (dietAPIS != null) {
+                dietAdapter.setData(dietAPIS);
+                showLoading(false);
             }
         });
 
-        dietAdapter.setOnItemClickCallback(new DietAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(DietAPI data) {
-                Intent detailDiet = new Intent(KumpulanData.this, DetailData.class);
-                detailDiet.putExtra("gambar", data.getGambar());
-                detailDiet.putExtra("judul", data.getNama());
-                detailDiet.putExtra("subjudul", "Salah satu jenis Diet");
-                detailDiet.putExtra("deskripsi", data.getDeskripsi());
-                detailDiet.putExtra(EXTRA_ACTION, ACTION_DIET);
-                startActivity(detailDiet);
-            }
+        dietAdapter.setOnItemClickCallback(data -> {
+            Intent detailDiet = new Intent(KumpulanData.this, DetailData.class);
+            detailDiet.putExtra("gambar", data.getGambar());
+            detailDiet.putExtra("judul", data.getNama());
+            detailDiet.putExtra("subjudul", "Salah satu jenis Diet");
+            detailDiet.putExtra("deskripsi", data.getDeskripsi());
+            detailDiet.putExtra(EXTRA_ACTION, ACTION_DIET);
+            startActivity(detailDiet);
         });
     }
 
@@ -229,17 +214,14 @@ public class KumpulanData extends AppCompatActivity {
             }
         });
 
-        olahragaAdapter.setOnItemClickCallback(new OlahragaAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(OlahragaAPI data) {
-                Intent detailOlahraga = new Intent(KumpulanData.this, DetailData.class);
-                detailOlahraga.putExtra("gambar", data.getGambar());
-                detailOlahraga.putExtra("judul", data.getNama());
-                detailOlahraga.putExtra("subjudul", data.getJenis());
-                detailOlahraga.putExtra("deskripsi", data.getDeskripsi());
-                detailOlahraga.putExtra(EXTRA_ACTION, ACTION_OLAHRAGA);
-                startActivity(detailOlahraga);
-            }
+        olahragaAdapter.setOnItemClickCallback(data -> {
+            Intent detailOlahraga = new Intent(KumpulanData.this, DetailData.class);
+            detailOlahraga.putExtra("gambar", data.getGambar());
+            detailOlahraga.putExtra("judul", data.getNama());
+            detailOlahraga.putExtra("subjudul", data.getJenis());
+            detailOlahraga.putExtra("deskripsi", data.getDeskripsi());
+            detailOlahraga.putExtra(EXTRA_ACTION, ACTION_OLAHRAGA);
+            startActivity(detailOlahraga);
         });
     }
 }

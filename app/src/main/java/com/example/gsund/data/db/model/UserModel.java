@@ -8,11 +8,29 @@ public class UserModel extends RealmObject {
     @PrimaryKey
     private int id;
     private String nama;
+    private String namaPanggilan;
     private int umur;
     private int beratBadan;
     private int tinggiBadan;
     private String jenisKelamin;
     private String riwayatPenyakit;
+    private String intensitasOlahraga;
+
+    public String getNamaPanggilan() {
+        return namaPanggilan;
+    }
+
+    public void setNamaPanggilan(String namaPanggilan) {
+        this.namaPanggilan = namaPanggilan;
+    }
+
+    public String getIntensitasOlahraga() {
+        return intensitasOlahraga;
+    }
+
+    public void setIntensitasOlahraga(String intensitasOlahraga) {
+        this.intensitasOlahraga = intensitasOlahraga;
+    }
 
     public String getJenisKelamin() {
         return jenisKelamin;

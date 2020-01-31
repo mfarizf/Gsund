@@ -70,4 +70,20 @@ public class PreferencesManager {
         edit.apply();
     }
 
+    public String getAir(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
+        return sharedPreferences.getString("air", null);
+    }
+
+    public void setAir(double bmi){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREF, 0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formatted = df.format(bmi);
+
+        edit.putString("air", formatted);
+        edit.apply();
+    }
+
 }

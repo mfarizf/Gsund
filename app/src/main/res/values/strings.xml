@@ -13,15 +13,13 @@
     <string name="tinggi_badan">Tinggi Badan</string>
     <string name="berat_bedan">Berat Bedan</string>
     <string name="riwayat_penyakit">Riwayat Penyakit</string>
-    <string name="pria">Pria</string>
-    <string name="wanita">Wanita</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="masukan_umur">Masukan Umur</string>
-    <string name="masukan_nama">Masukan Nama Lengkap</string>
+    <string name="masukan_nama">Nama Lengkap</string>
     <string name="register">Register</string>
     <string name="gesund">Gesund</string>
     <string name="user_friendly">User Friendly</string>
-    <string name="deskripsi_intro_1">Asisten Manusia Dalam Membuat Lifestyle nya sendiri terutama dalam hal menjagatubuh mereka</string>
+    <string name="deskripsi_intro_1">Asisten Manusia Dalam Membuat Lifestyle nya sendiri terutama dalam hal menjaga tubuh mereka</string>
     <string name="all_in_one">All In One</string>
     <string name="deskripsi_intro_2">Semua Kemudahan tersedia di aplikasi Gesund,baik dalam segi fitur atupun pelayanan</string>
     <string name="deskripsi_intro_3">Semua fitur yang dibutuhkan anda sekarang telah tersedia di aplikasi Raisa, Ayo coba sekarang juga!</string>
@@ -41,9 +39,12 @@
     <string name="nilai_gemuk">25.00-29.99</string>
     <string name="nilai_obesitas"><![CDATA[>30.00]]></string>
     <string name="job_start">Job Service is already scheduled</string>
+    <string name="nama_panggilan">Nama Panggilan</string>
+    <string name="pria">Pria</string>
+    <string name="wanita">Wanita</string>
     <string-array name="item_intensitas_or">
-        <item>Sering</item>
-        <item>Jarang</item>
-        <item>Tidak Pernah</item>
+        <item>low</item>
+        <item>normal</item>
+        <item>high</item>
     </string-array>
 </resources>

@@ -68,7 +68,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="@string/masukan_nama">
+                android:hint="@string/nama_panggilan">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/register_input_nama_panggilan"
                     android:layout_width="match_parent"
@@ -158,6 +158,7 @@
 
 
             <RadioGroup
+                android:id="@+id/rdGroup"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
@@ -165,12 +166,12 @@
                 android:layout_height="match_parent">
                 <RadioButton
                     android:id="@+id/rb_laki_laki"
-                    android:text="Laki Laki"
+                    android:text="@string/pria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <RadioButton
                     android:id="@+id/rb_perempuan"
-                    android:text="Perempuan"
+                    android:text="@string/wanita"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </RadioGroup>
@@ -189,6 +190,7 @@
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:entries="@array/item_intensitas_or"
                 android:layout_marginTop="@dimen/_15sdp"
+                style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

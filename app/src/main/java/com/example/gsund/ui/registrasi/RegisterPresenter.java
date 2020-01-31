@@ -24,13 +24,15 @@ class RegisterPresenter {
         this.preferencesManager = preferencesManager;
     }
 
-    void getUser(String nama, int umur, int bb, int tb, String riwayatPenyakit){
+    void getUser(String nama, String namaPanggilan,int umur, int bb, int tb, String riwayatPenyakit, String jenkel, String intensOlahraga){
         UserModel userModel = new UserModel();
         userModel.setNama(nama);
+        userModel.setNamaPanggilan(namaPanggilan);
         userModel.setUmur(umur);
         userModel.setBeratBadan(bb);
         userModel.setTinggiBadan(tb);
-//        userModel.setJenisKelamin();
+        userModel.setJenisKelamin(jenkel.toLowerCase());
+        userModel.setIntensitasOlahraga(intensOlahraga);
         userModel.setRiwayatPenyakit(riwayatPenyakit);
 
         UserHelper userHelper = new UserHelper(realm);
@@ -38,12 +40,13 @@ class RegisterPresenter {
 
         hitungKebutuhan = new HitungKebutuhan();
 
-//        preferencesManager.setBMR(hitungKebutuhan.hitungBMR());
         preferencesManager.setFirst(false);
         preferencesManager.setId(userModel.getId());
         double bmi = hitungKebutuhan.hitungBMI(tb,bb);
-        Log.d("BMI", String.valueOf(bmi));
+
         preferencesManager.setBMI(bmi);
+        preferencesManager.setBMR(hitungKebutuhan.hitungBMR(jenkel, tb, bb, umur, intensOlahraga));
+        preferencesManager.setAir(hitungKebutuhan.hitungAir(bb,intensOlahraga));
 
         registerCallback.onSuccessRegister();
 

@@ -21,7 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/gunung"
         />
 
     <androidx.cardview.widget.CardView
@@ -37,8 +36,7 @@
         android:focusable="true"
         app:cardUseCompatPadding="true"
         android:elevation="10dp"
-        app:cardCornerRadius="20dp"
-        >
+        app:cardCornerRadius="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -50,8 +48,7 @@
                 android:layout_height="70dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_margin="30dp"
-                android:src="@drawable/pic_sample_1" />
+                android:layout_margin="30dp" />
 
             <TextView
                 android:id="@+id/email_profile"
@@ -75,21 +72,6 @@
                 android:textStyle="bold" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/btn_ubahdata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:background="@drawable/button_rounded_red"
-        android:layout_marginBottom="16dp"
-        android:text="Ubah Data"
-        android:textAllCaps="false"
-        android:fontFamily="@font/notosans_bold"
-        android:textColor="@color/putih"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
         app:layout_constraintTop_toBottomOf="@id/cv_profile"

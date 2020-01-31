@@ -14,10 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gsund.R;
 import com.example.gsund.api.retrofit.DataViewModel;
-import com.example.gsund.api.retrofit.model.DietAPI;
-import com.example.gsund.api.retrofit.model.MakananAPI;
 import com.example.gsund.api.retrofit.model.OlahragaAPI;
-import com.example.gsund.api.retrofit.model.PenyakitAPI;
 import com.example.gsund.ui.main.adapter.DietAdapter;
 import com.example.gsund.ui.main.adapter.MakananAdapter;
 import com.example.gsund.ui.main.adapter.OlahragaAdapter;
@@ -125,7 +122,7 @@ public class KumpulanData extends AppCompatActivity {
             Intent detailMakanan = new Intent(KumpulanData.this, DetailData.class);
             detailMakanan.putExtra("gambar", data.getGambar());
             detailMakanan.putExtra("judul", data.getNama());
-            detailMakanan.putExtra("subjudul", "Kalori : " + data.getKalori());
+            detailMakanan.putExtra("subjudul", data.getJenis());
             detailMakanan.putExtra("deskripsi", data.getKalori());
             detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
             startActivity(detailMakanan);

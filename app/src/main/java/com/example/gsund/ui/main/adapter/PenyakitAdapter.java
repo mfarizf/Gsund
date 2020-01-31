@@ -37,7 +37,7 @@ public class PenyakitAdapter extends RecyclerView.Adapter<PenyakitAdapter.Penyak
     @Override
     public PenyakitAdapter.PenyakitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(R.layout.item_diet, parent, false);
+        View v = inflater.inflate(R.layout.item_penyakit, parent, false);
         return new PenyakitAdapter.PenyakitViewHolder(v);
     }
 

@@ -37,7 +37,7 @@ public class OlahragaAdapter extends RecyclerView.Adapter<OlahragaAdapter.Olahra
     @Override
     public OlahragaAdapter.OlahragaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(R.layout.item_diet, parent, false);
+        View v = inflater.inflate(R.layout.item_olahraga, parent, false);
         return new OlahragaAdapter.OlahragaViewHolder(v);
     }
 

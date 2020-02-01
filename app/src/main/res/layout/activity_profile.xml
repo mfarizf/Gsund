@@ -84,12 +84,11 @@
         app:tabTextColor="@color/putih" />
 
     <androidx.viewpager.widget.ViewPager
-        app:layout_constraintTop_toBottomOf="@id/tabs"
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="215dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
+        android:layout_height="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

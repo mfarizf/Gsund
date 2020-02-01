@@ -1,5 +1,6 @@
 package com.example.gsund.ui.profile;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.TextView;
 
@@ -25,17 +26,19 @@ public class ProfilePresenter {
         this.preferencesManager = preferencesManager;
     }
 
-    void getUser(TextView nama,TextView tb, TextView bb, TextView penyakit, TextView umur, TextView jenkel){
+    @SuppressLint("SetTextI18n")
+    void getUser(TextView namaPanggilan,TextView nama, TextView tb, TextView bb, TextView penyakit, TextView umur, TextView jenkel){
         List<UserModel> userModel;
         UserHelper userHelper = new UserHelper(realm);
 
         userModel = userHelper.getUser(preferencesManager.getId());
 
         nama.setText(userModel.get(0).getNama());
-        tb.setText(userModel.get(0).getTinggiBadan());
-        bb.setText(userModel.get(0).getBeratBadan());
+        namaPanggilan.setText(userModel.get(0).getNamaPanggilan());
+        tb.setText(userModel.get(0).getTinggiBadan() +" CM");
+        bb.setText(userModel.get(0).getBeratBadan() +" KG");
         penyakit.setText(userModel.get(0).getRiwayatPenyakit());
-        umur.setText(userModel.get(0).getUmur());
+        umur.setText(userModel.get(0).getUmur() +" Tahun");
         jenkel.setText(userModel.get(0).getJenisKelamin());
 
     }

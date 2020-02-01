@@ -1,158 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/_24sdp"
-    android:orientation="vertical"
-    tools:context=".ui.profile.ProfileActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/judul_jenkel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/notosans_bold"
-        android:text="@string/profile_jenis_kelamin"
-        android:textColor="#111"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/judul_umur"
-        app:layout_constraintTop_toBottomOf="@+id/judul_umur" />
-
-    <TextView
-        android:id="@+id/judulnama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/notosans_bold"
-        android:textColor="#111"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Nama"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/judul_tb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/profile_tb"
-        android:fontFamily="@font/notosans_bold"
-        android:textColor="#111"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/judulnama"
-        app:layout_constraintTop_toBottomOf="@+id/judulnama" />
-
-    <TextView
-        android:id="@+id/judul_penyakit"
-        android:layout_width="180dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/notosans_bold"
-        android:text="@string/profile_riwayat_penyakit"
-        android:textColor="#111"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/judul_tb"
-        app:layout_constraintTop_toBottomOf="@+id/profil_tb" />
-
-    <TextView
-        android:id="@+id/judul_umur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/notosans_bold"
-        android:text="@string/profile_umur"
-        android:textColor="#111"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/judul_penyakit"
-        app:layout_constraintTop_toBottomOf="@+id/judul_penyakit" />
-
-    <TextView
-        android:id="@+id/judul_bb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/notosans_bold"
-        android:text="@string/profile_bb"
-        android:textColor="#111"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toEndOf="@+id/judul_tb"
-        app:layout_constraintTop_toTopOf="@+id/judul_tb" />
-
-    <TextView
-        android:id="@+id/profil_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/isi_profile_name"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/judulnama"
-        app:layout_constraintTop_toBottomOf="@+id/judulnama" />
-
-    <TextView
-        android:id="@+id/profil_tb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="154 CM"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="@+id/judul_tb"
-        app:layout_constraintTop_toBottomOf="@+id/judul_tb" />
-
-    <TextView
-        android:id="@+id/profil_penyakit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tidak Ada"
-        app:layout_constraintStart_toStartOf="@+id/judul_penyakit"
-        app:layout_constraintTop_toBottomOf="@+id/judul_penyakit" />
-
-    <TextView
-        android:id="@+id/profil_umur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="18"
-        app:layout_constraintStart_toStartOf="@+id/judul_umur"
-        app:layout_constraintTop_toBottomOf="@+id/judul_umur" />
-
-    <TextView
-        android:id="@+id/profil_jenkel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Perempuan"
-        app:layout_constraintStart_toStartOf="@+id/judul_jenkel"
-        app:layout_constraintTop_toBottomOf="@+id/judul_jenkel" />
-
-    <TextView
-        android:id="@+id/profil_bb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="48KG"
-        app:layout_constraintEnd_toEndOf="@+id/judul_bb"
-        app:layout_constraintStart_toStartOf="@+id/judul_bb"
-        app:layout_constraintTop_toBottomOf="@+id/judul_bb" />
-
-    <Button
-        android:id="@+id/btn_ubahdata"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:background="@drawable/button_rounded_red"
-        android:layout_marginBottom="16dp"
-        android:text="Ubah Data"
-        android:textAllCaps="false"
-        android:fontFamily="@font/notosans_bold"
-        android:textColor="@color/putih"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_margin="@dimen/_24sdp"
+        android:orientation="vertical"
+        tools:context=".ui.profile.ProfileActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/judulnama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/notosans_bold"
+            android:text="Nama"
+            android:textColor="#111"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profil_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/isi_profile_name"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/judulnama"
+            app:layout_constraintTop_toBottomOf="@+id/judulnama" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/judul_tb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:fontFamily="@font/notosans_bold"
+                    android:text="@string/profile_tb"
+                    android:textColor="#111"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/judulnama"
+                    app:layout_constraintTop_toBottomOf="@+id/judulnama" />
+
+                <TextView
+                    android:id="@+id/profil_tb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="154 CM"
+                    app:layout_constraintHorizontal_bias="0.513"
+                    app:layout_constraintStart_toStartOf="@+id/judul_tb"
+                    app:layout_constraintTop_toBottomOf="@+id/judul_tb" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/judul_bb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:fontFamily="@font/notosans_bold"
+                    android:text="@string/profile_bb"
+                    android:textColor="#111"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profil_bb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="48KG"
+                    app:layout_constraintEnd_toEndOf="@+id/judul_bb"
+                    app:layout_constraintStart_toStartOf="@+id/judul_bb"
+                    app:layout_constraintTop_toBottomOf="@+id/judul_bb" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/judul_jenkel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/notosans_bold"
+            android:text="@string/profile_jenis_kelamin"
+            android:textColor="#111"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/judul_umur"
+            app:layout_constraintTop_toBottomOf="@+id/judul_umur" />
+
+        <TextView
+            android:id="@+id/profil_jenkel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perempuan"
+            app:layout_constraintStart_toStartOf="@+id/judul_jenkel"
+            app:layout_constraintTop_toBottomOf="@+id/judul_jenkel" />
+
+        <TextView
+            android:id="@+id/judul_penyakit"
+            android:layout_width="180dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/notosans_bold"
+            android:text="@string/profile_riwayat_penyakit"
+            android:textColor="#111"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/judul_tb"
+            app:layout_constraintTop_toBottomOf="@+id/profil_tb" />
+
+        <TextView
+            android:id="@+id/profil_penyakit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak Ada"
+            app:layout_constraintStart_toStartOf="@+id/judul_penyakit"
+            app:layout_constraintTop_toBottomOf="@+id/judul_penyakit" />
+
+        <TextView
+            android:id="@+id/judul_umur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/notosans_bold"
+            android:text="@string/profile_umur"
+            android:textColor="#111"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/judul_penyakit"
+            app:layout_constraintTop_toBottomOf="@+id/judul_penyakit" />
+
+
+        <TextView
+            android:id="@+id/profil_umur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18"
+            app:layout_constraintStart_toStartOf="@+id/judul_umur"
+            app:layout_constraintTop_toBottomOf="@+id/judul_umur" />
+
+
+        <Button
+            android:id="@+id/btn_ubahdata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_rounded_red"
+            android:fontFamily="@font/notosans_bold"
+            android:text="Ubah Data"
+            android:textAllCaps="false"
+            android:textColor="@color/putih"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+</ScrollView>

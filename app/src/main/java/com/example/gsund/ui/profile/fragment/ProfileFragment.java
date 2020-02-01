@@ -1,4 +1,4 @@
-package com.example.gsund.ui.profile;
+package com.example.gsund.ui.profile.fragment;
 
 
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.gsund.R;
 import com.example.gsund.data.prefs.PreferencesManager;
+import com.example.gsund.ui.profile.ProfileCallback;
+import com.example.gsund.ui.profile.ProfilePresenter;
 
 import java.util.Objects;
 
@@ -26,7 +28,7 @@ import io.realm.RealmConfiguration;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment implements ProfileCallback{
+public class ProfileFragment extends Fragment implements ProfileCallback {
     @BindView(R.id.profil_nama)
     TextView nama;
     @BindView(R.id.profil_tb)

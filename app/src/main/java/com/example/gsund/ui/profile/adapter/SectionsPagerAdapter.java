@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.gsund.R;
-import com.example.gsund.ui.profile.ProfileFragment;
-import com.example.gsund.ui.profile_progress.ProgressFragment;
+import com.example.gsund.ui.profile.fragment.ProfileFragment;
+import com.example.gsund.ui.profile.fragment.ProgressFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

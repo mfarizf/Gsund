@@ -30,6 +30,8 @@ public class ProfileActivity extends AppCompatActivity {
     ViewPager viewPager;
     @BindView(R.id.tabs)
     TabLayout tabLayout;
+    @BindView(R.id.setting)
+    ImageView settings;
 
     PreferencesManager preferencesManager;
 
@@ -46,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Glide.with(this).load(R.drawable.gunung).into(imageBack);
         Glide.with(this).load(R.drawable.pic_sample_1).into(imageProfile);
+        Glide.with(this).load(R.drawable.ic_settings_black_24dp).into(settings);
     }
 
 }

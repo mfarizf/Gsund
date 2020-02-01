@@ -27,7 +27,7 @@ public class ProfilePresenter {
     }
 
     @SuppressLint("SetTextI18n")
-    void getUser(TextView namaPanggilan,TextView nama, TextView tb, TextView bb, TextView penyakit, TextView umur, TextView jenkel){
+    public void getUser(TextView namaPanggilan, TextView nama, TextView tb, TextView bb, TextView penyakit, TextView umur, TextView jenkel){
         List<UserModel> userModel;
         UserHelper userHelper = new UserHelper(realm);
 

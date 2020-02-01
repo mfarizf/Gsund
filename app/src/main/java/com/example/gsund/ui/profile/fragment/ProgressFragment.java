@@ -1,4 +1,4 @@
-package com.example.gsund.ui.profile_progress;
+package com.example.gsund.ui.profile.fragment;
 
 
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gsund.R;
-
 
 /**
  * A simple {@link Fragment} subclass.

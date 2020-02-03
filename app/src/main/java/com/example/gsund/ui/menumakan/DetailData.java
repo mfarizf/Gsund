@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.gsund.R;
+import com.example.gsund.ui.timer.TimerOlahraga;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -162,6 +163,8 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
 
     private void olahraga() {
         // Pindah ke Intent Olahraga
+        Intent intentOlahraga = new Intent(DetailData.this, TimerOlahraga.class);
+        startActivity(intentOlahraga);
         Toast.makeText(this, "Yuk mulai olahraga! ^_^", Toast.LENGTH_SHORT).show();
     }
 }

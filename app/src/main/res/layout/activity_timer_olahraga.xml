@@ -7,23 +7,25 @@
     tools:context="com.example.gsund.ui.timer.TimerOlahraga">
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="match_parent"
+        android:id="@+id/label_timer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_15sdp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
-        android:drawablePadding="@dimen/_15sdp"
+        android:drawablePadding="@dimen/_10sdp"
         android:text="Timer"
         android:textColor="#000"
         android:textSize="@dimen/_18sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="19dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <net.crosp.libs.android.circletimeview.CircleTimeView
         android:id="@+id/circle_timer_view"
+        Of="@id/btn_stop_timer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.9"
+        android:layout_marginBottom="32dp"
         app:ctvCircleButtonColor="#099ef4"
         app:ctvCircleColor="#00d9ff"
         app:ctvCircleHandButtonRadius="10dp"
@@ -54,7 +56,39 @@
         app:ctvTimeMode="manual"
         app:ctvTimeNumberColor="#00d0ff"
         app:ctvTimeNumbersTextSize="55sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_play_timer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/label_timer" />
+
+    <ImageView
+        android:id="@+id/btn_play_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/ic_play_arrow_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_stop_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/ic_stop_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_play_timer" />
+
+    <ImageView
+        android:id="@+id/btn_reset_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/ic_refresh_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_stop_timer" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -169,9 +169,11 @@ public class MainActivity extends AppCompatActivity {
 
         String title = "Minum Air";
         String message = "Jangan Lupa Minum Air 2 Liter/Hari !";
-        int  notifID = 1;
+        int  notifID = 101;
         AlarmNotification alarmNotification = new AlarmNotification();
         alarmNotification.showNotification(getApplicationContext(),title,message,notifID);
+        alarmNotification.setRepeatingAlarm(this,alarmNotification.TYPE_REPEATING,"30",message);
+
     }
 
 

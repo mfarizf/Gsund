@@ -74,6 +74,8 @@ public class TimerOlahraga extends AppCompatActivity implements View.OnClickList
                         sp.play(soundId, 1f, 1f, 1, 0, 1f);
                     }
                     circleTimeView.stopTimer();
+                    isPlay = false;
+                    circleTimeView.setCurrentTimeMode(CircleTimeView.MODE_MANUAL_SETUP);
                 }
             }
         });
@@ -100,13 +102,11 @@ public class TimerOlahraga extends AppCompatActivity implements View.OnClickList
         sp = new SoundPool.Builder()
                 .setMaxStreams(10)
                 .build();
-        sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                if (status == 0) {
-                    spLoaded = true;
-                } else {
-                    Toast.makeText(TimerOlahraga.this, "Gagal load", Toast.LENGTH_SHORT).show();
-                }
+        sp.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
+            if (status == 0) {
+                spLoaded = true;
+            } else {
+                Toast.makeText(TimerOlahraga.this, "Gagal load", Toast.LENGTH_SHORT).show();
             }
         });
         soundId = sp.load(this, R.raw.tokopedia, 1);
@@ -121,7 +121,6 @@ public class TimerOlahraga extends AppCompatActivity implements View.OnClickList
             showConfirmDialog(1);
         } else if (v.getId() == R.id.btn_stop_timer) {
             showConfirmDialog(2);
-            Toast.makeText(TimerOlahraga.this, "Ayooo semangat!", Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.btn_reset_timer) {
             showConfirmDialog(3);
         }
@@ -136,13 +135,10 @@ public class TimerOlahraga extends AppCompatActivity implements View.OnClickList
                     mDialog.setContentText("Siap siap yaa!");
                     mDialog.setConfirmText("Iya Dong!");
                     mDialog.confirmButtonColor(R.color.blue_btn_bg_color);
-                    mDialog.setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
-                        @Override
-                        public void onClick(KAlertDialog kAlertDialog) {
-                            circleTimeView.startTimer();
-                            kAlertDialog.cancel();
-                            isPlay = true;
-                        }
+                    mDialog.setConfirmClickListener(kAlertDialog -> {
+                        circleTimeView.startTimer();
+                        kAlertDialog.cancel();
+                        isPlay = true;
                     });
                     mDialog.setCancelText("Ngga jadi deh");
                     mDialog.setCancelClickListener(KAlertDialog::cancel);
@@ -153,13 +149,10 @@ public class TimerOlahraga extends AppCompatActivity implements View.OnClickList
                     mDialog.setContentText("Kali ini lebih semangat Ya!");
                     mDialog.setConfirmText("Gas!");
                     mDialog.confirmButtonColor(R.color.blue_btn_bg_color);
-                    mDialog.setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
-                        @Override
-                        public void onClick(KAlertDialog kAlertDialog) {
-                            circleTimeView.startTimer();
-                            kAlertDialog.cancel();
-                            isPlay = true;
-                        }
+                    mDialog.setConfirmClickListener(kAlertDialog -> {
+                        circleTimeView.startTimer();
+                        kAlertDialog.cancel();
+                        isPlay = true;
                     });
                     mDialog.setCancelText("Ngga jadi deh");
                     mDialog.setCancelClickListener(KAlertDialog::cancel);
@@ -181,13 +174,10 @@ public class TimerOlahraga extends AppCompatActivity implements View.OnClickList
                 mDialog.setContentText("Tetap Semangat Yaa!");
                 mDialog.setConfirmText("Iya cape nih!");
                 mDialog.confirmButtonColor(R.color.blue_btn_bg_color);
-                mDialog.setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
-                    @Override
-                    public void onClick(KAlertDialog kAlertDialog) {
-                        circleTimeView.stopTimer();
-                        circleTimeView.setCurrentTimeMode(CircleTimeView.MODE_MANUAL_SETUP);
-                        kAlertDialog.cancel();
-                    }
+                mDialog.setConfirmClickListener(kAlertDialog -> {
+                    circleTimeView.stopTimer();
+                    circleTimeView.setCurrentTimeMode(CircleTimeView.MODE_MANUAL_SETUP);
+                    kAlertDialog.cancel();
                 });
                 mDialog.setCancelText("Lanjut!");
                 mDialog.setCancelClickListener(KAlertDialog::cancel);
@@ -207,14 +197,11 @@ public class TimerOlahraga extends AppCompatActivity implements View.OnClickList
                 mDialog.setContentText("Waktu bakal balik lagi ke awal, kayak kita dulu :( !");
                 mDialog.setConfirmText("Iya nih!");
                 mDialog.confirmButtonColor(R.color.blue_btn_bg_color);
-                mDialog.setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
-                    @Override
-                    public void onClick(KAlertDialog kAlertDialog) {
-                        circleTimeView.stopTimer();
-                        circleTimeView.resetTime();
-                        isPlay = false;
-                        kAlertDialog.cancel();
-                    }
+                mDialog.setConfirmClickListener(kAlertDialog -> {
+                    circleTimeView.stopTimer();
+                    circleTimeView.resetTime();
+                    isPlay = false;
+                    kAlertDialog.cancel();
                 });
                 mDialog.setCancelText("Ngga jadi deh");
                 mDialog.setCancelClickListener(KAlertDialog::cancel);

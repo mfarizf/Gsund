@@ -11,20 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.gsund.R;
-import com.example.gsund.ui.main.ItemOption;
+import com.example.gsund.api.retrofit.model.TipsAPI;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
-    private List<ItemOption> item = Arrays.asList(
-            new ItemOption(1, "Food", "You're Choose Food", R.drawable.food),
-            new ItemOption(2, "Diet", "You're Choose Diet", R.drawable.diet),
-            new ItemOption(3, "Sport", "You're Choose Sport", R.drawable.sport));
+    private ArrayList<TipsAPI> mData = new ArrayList<TipsAPI>();
+    private OnItemClickCallback onItemClickCallback;
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
+    public void setData(ArrayList<TipsAPI> items) {
+        mData.clear();
+        mData.addAll(items);
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -35,18 +42,18 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TipsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(holder.itemView.getContext())
-                .load(item.get(position).getImage())
+                .load(mData.get(position).getGambar())
                 .into(holder.imgBackground);
 
-        holder.judul.setText(item.get(position).getName());
+        holder.judul.setText(mData.get(position).getJudul());
 
     }
 
     @Override
     public int getItemCount() {
-        return item.size();
+        return mData.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -59,5 +66,9 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
             ButterKnife.bind(this, itemView);
 
         }
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(TipsAPI data);
     }
 }

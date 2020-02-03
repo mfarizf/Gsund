@@ -15,20 +15,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.developer.kalert.KAlertDialog;
 import com.example.gsund.R;
+import com.example.gsund.api.retrofit.DataViewModel;
 import com.example.gsund.data.db.helper.UserHelper;
 import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
-import com.example.gsund.ui.menumakan.DetailData;
 import com.example.gsund.ui.menumakan.KumpulanData;
-import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.utils.AlarmNotification;
 import com.example.gsund.utils.RecyclerOnTouchListener;
@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
             new ItemOption(2, "Diet", "You're Choose Diet", R.drawable.diet),
             new ItemOption(3, "Sport", "You're Choose Sport", R.drawable.sport));
 
+    // Adapter
+    TipsAdapter tipsAdapter;
+    DataViewModel dataViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,8 +95,7 @@ public class MainActivity extends AppCompatActivity {
         anim = AnimationUtils.loadAnimation(this,R.anim.logoanim);
 
         OptionAdapter optionAdapter = new OptionAdapter(item);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-        TipsAdapter tipsAdapter = new TipsAdapter();
+
 
         discreteScrollView.setOrientation(DSVOrientation.HORIZONTAL);
         discreteScrollView.setAdapter(optionAdapter);
@@ -101,8 +104,13 @@ public class MainActivity extends AppCompatActivity {
                 .setMinScale(0.8f)
                 .build());
 
+        // Untuk Tips
+        // Main View Model
+        dataViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DataViewModel.class);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerTips.setLayoutManager(layoutManager);
-        recyclerTips.setAdapter(tipsAdapter);
+        recyclerTips.setHasFixedSize(true);
+        showListTips();
 
         list = userHelper.getUser(preferencesManager.getId());
 
@@ -134,19 +142,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 showDialog(item.get(position).getName());
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-
-        recyclerTips.addOnItemTouchListener(new RecyclerOnTouchListener(MainActivity.this, recyclerTips, new RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-
-                startActivity(new Intent(MainActivity.this, DetailData.class));
             }
 
             @Override
@@ -244,6 +239,35 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.item_diet)
     void itemDiet() {
         startActivity(new Intent(MainActivity.this, KumpulanData.class).putExtra("tipe", "diet"));
+    }
+
+    // Tips
+    private void showListTips() {
+        // Set Adapter
+        tipsAdapter = new TipsAdapter();
+        tipsAdapter.notifyDataSetChanged();
+        recyclerTips.setAdapter(tipsAdapter);
+
+        // Set Data
+        dataViewModel.setDataTips();
+
+        // Get Data apabila sudah ada
+        dataViewModel.getDataTips().observe(this, tipsAPIS -> {
+            if (tipsAPIS != null) {
+                tipsAdapter.setData(tipsAPIS);
+            }
+        });
+
+        tipsAdapter.setOnItemClickCallback(data -> {
+//            Intent detailMakanan = new Intent(KumpulanData.this, DetailData.class);
+//            detailMakanan.putExtra("gambar", data.getGambar());
+//            detailMakanan.putExtra("judul", data.getNama());
+//            detailMakanan.putExtra("subjudul", data.getJenis());
+//            detailMakanan.putExtra("deskripsi", data.getDeskripsi());
+//            detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
+//            startActivity(detailMakanan);
+            Toast.makeText(MainActivity.this, "Opps!" + data.getKonteks(), Toast.LENGTH_SHORT).show();
+        });
     }
 
 }

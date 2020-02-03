@@ -11,12 +11,15 @@ public class TipsAPI {
     private String deskripsi;
     @SerializedName("gambar")
     private String gambar;
+    @SerializedName("konteks")
+    private String konteks;
 
-    public TipsAPI(int id, String judul, String deskripsi, String gambar) {
+    public TipsAPI(int id, String judul, String deskripsi, String gambar, String konteks) {
         this.id = id;
         this.judul = judul;
         this.deskripsi = deskripsi;
         this.gambar = gambar;
+        this.konteks = konteks;
     }
 
     public int getId() {
@@ -49,5 +52,13 @@ public class TipsAPI {
 
     public void setGambar(String gambar) {
         this.gambar = gambar;
+    }
+
+    public String getKonteks() {
+        return konteks;
+    }
+
+    public void setKonteks(String konteks) {
+        this.konteks = konteks;
     }
 }

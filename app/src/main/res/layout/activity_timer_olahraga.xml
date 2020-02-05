@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#1c1c1c"
     android:layout_height="match_parent"
     tools:context="com.example.gsund.ui.timer.TimerOlahraga">
 
@@ -15,7 +16,7 @@
         android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
         android:drawablePadding="@dimen/_10sdp"
         android:text="Timer"
-        android:textColor="#000"
+        android:textColor="#FFF"
         android:textSize="@dimen/_18sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -75,7 +76,7 @@
         android:id="@+id/btn_stop_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="76dp"
         android:layout_marginBottom="100dp"
         android:src="@drawable/ic_stop_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,6 +90,7 @@
         android:layout_marginBottom="100dp"
         android:src="@drawable/ic_refresh_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_stop_timer" />
+        app:layout_constraintEnd_toStartOf="@id/btn_stop_timer"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

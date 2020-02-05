@@ -37,7 +37,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/notosans_regular"
-                            android:text="Food"
+                            tools:text="Food"
                             android:textColor="#000"
                             android:textSize="32sp" />
                         <TextView
@@ -45,7 +45,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/notosans_regular"
-                            android:text="ini adalah makanan Enak"
+                            tools:text="ini adalah makanan Enak"
                             android:singleLine="true"
                             android:layout_below="@+id/tv_nama"
                             android:textColor="#000"

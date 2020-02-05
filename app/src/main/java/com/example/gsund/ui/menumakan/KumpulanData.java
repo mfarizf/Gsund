@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.example.gsund.R;
 import com.example.gsund.api.retrofit.DataViewModel;
 import com.example.gsund.api.retrofit.model.OlahragaAPI;
@@ -38,6 +40,8 @@ public class KumpulanData extends AppCompatActivity {
     private PenyakitAdapter penyakitAdapter;
     // Inisialisasi View Model
     private DataViewModel dataViewModel;
+    // Inisialisasi Skeleton View
+    SkeletonScreen skeletonListMakanan, skeletonListOlahraga, skeletonListDiet;
     // Inisialisasi Parameter yang dibutuhkan
     public final String EXTRA_ACTION = "extra_action";
     public final String MAKANAN = "makanan";
@@ -105,16 +109,16 @@ public class KumpulanData extends AppCompatActivity {
         makananAdapter = new MakananAdapter();
         makananAdapter.notifyDataSetChanged();
         rvData.setAdapter(makananAdapter);
+        skeletonListMakanan = Skeleton.bind(rvData).adapter(makananAdapter).load(R.layout.item_makanan).show();
 
         // Set Data
         dataViewModel.setDataMakanan();
-        showLoading(true);
 
         // Get Data apabila sudah ada
         dataViewModel.getDataMakanan().observe(this, makananAPIS -> {
             if (makananAPIS != null) {
                 makananAdapter.setData(makananAPIS);
-                showLoading(false);
+                skeletonListMakanan.hide();
             }
         });
 
@@ -165,16 +169,16 @@ public class KumpulanData extends AppCompatActivity {
         dietAdapter = new DietAdapter();
         dietAdapter.notifyDataSetChanged();
         rvData.setAdapter(dietAdapter);
+        skeletonListDiet = Skeleton.bind(rvData).adapter(dietAdapter).load(R.layout.item_diet).show();
 
         // Set Data
         dataViewModel.setDataDiet();
-        showLoading(true);
 
         // Get Data apabila sudah ada
         dataViewModel.getDataDiet().observe(this, dietAPIS -> {
             if (dietAPIS != null) {
                 dietAdapter.setData(dietAPIS);
-                showLoading(false);
+                skeletonListDiet.hide();
             }
         });
 
@@ -195,10 +199,10 @@ public class KumpulanData extends AppCompatActivity {
         olahragaAdapter = new OlahragaAdapter();
         olahragaAdapter.notifyDataSetChanged();
         rvData.setAdapter(olahragaAdapter);
+        skeletonListOlahraga = Skeleton.bind(rvData).adapter(olahragaAdapter).load(R.layout.item_olahraga).show();
 
         // Set Data
         dataViewModel.setDataOlahraga();
-        showLoading(true);
 
         // Get Data apabila sudah ada
         dataViewModel.getDataOlahraga().observe(this, new Observer<ArrayList<OlahragaAPI>>() {
@@ -206,7 +210,7 @@ public class KumpulanData extends AppCompatActivity {
             public void onChanged(ArrayList<OlahragaAPI> olahragaAPIS) {
                 if (olahragaAPIS != null) {
                     olahragaAdapter.setData(olahragaAPIS);
-                    showLoading(false);
+                    skeletonListOlahraga.hide();
                 }
             }
         });

@@ -2,22 +2,19 @@ package com.example.gsund.ui.profile.fragment;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.example.gsund.R;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.profile.ProfileCallback;
 import com.example.gsund.ui.profile.ProfilePresenter;
-
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +38,7 @@ public class ProfileFragment extends Fragment implements ProfileCallback {
     TextView umur;
     @BindView(R.id.profil_jenkel)
     TextView jenkel;
-    @BindView(R.id.name_profile)
+    @BindView(R.id.profil_nama_panggilan)
     TextView namaPanggilan;
 
     private ProfilePresenter profilePresenter;
@@ -56,7 +53,7 @@ public class ProfileFragment extends Fragment implements ProfileCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        ButterKnife.bind(Objects.requireNonNull(getActivity()), view);
+        ButterKnife.bind(this, view);
         PreferencesManager preferencesManager = new PreferencesManager(getActivity());
 
         Realm.init(getActivity());

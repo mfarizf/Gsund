@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageSport;
     @BindView(R.id.img_brokoli)
     ImageView imageDiet;
+    @BindView(R.id.repeat_switch)
+    Switch rSwitch;
+
+    //declare alarm notification
+    AlarmNotification alarmNotification = new AlarmNotification();
+
 
     List<UserModel> list = new ArrayList<>();
     UserHelper userHelper;
@@ -149,7 +156,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }));
+
+        rSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+             getDrinkAlarm();
+             rSwitch.setChecked(true);
+            }else{
+                cancelAlarm();
+                rSwitch.setChecked(false);
+            }
+        });
     }
+
 
     private void showDialog(String text){
         KAlertDialog pDialog = new KAlertDialog(this, KAlertDialog.SUCCESS_TYPE);
@@ -159,21 +177,28 @@ public class MainActivity extends AppCompatActivity {
         pDialog.show();
     }
 
+
+
+
+
+
     @OnClick(R.id.img_profile)
     void profile(){
         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
     }
 
-    @OnClick(R.id.temporary)
-    void click(){
-
+    private  void getDrinkAlarm() {
         String title = "Minum Air";
         String message = "Jangan Lupa Minum Air 2 Liter/Hari !";
-        int  notifID = 101;
-        AlarmNotification alarmNotification = new AlarmNotification();
-        alarmNotification.showNotification(getApplicationContext(),title,message,notifID);
-        alarmNotification.setRepeatingAlarm(this,alarmNotification.TYPE_REPEATING,"30",message);
+        int notifID = 101;
 
+        alarmNotification.showNotification(getApplicationContext(), title, message, notifID);
+        alarmNotification.setRepeatingAlarm(this, alarmNotification.TYPE_REPEATING, "30", message);
+
+    }
+
+    private  void cancelAlarm(){
+        alarmNotification.cancelAlarm(this,alarmNotification.TYPE_REPEATING);
     }
 
 

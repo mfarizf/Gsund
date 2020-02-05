@@ -28,6 +28,7 @@ import com.example.gsund.data.db.helper.UserHelper;
 import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
+import com.example.gsund.ui.main.adapter.RekomendasiAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menumakan.KumpulanData;
 import com.example.gsund.ui.profile.ProfileActivity;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Adapter
     TipsAdapter tipsAdapter;
+    RekomendasiAdapter rekomendasiAdapter;
     DataViewModel dataViewModel;
 
     @Override
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         discreteScrollView.setOrientation(DSVOrientation.HORIZONTAL);
-        discreteScrollView.setAdapter(optionAdapter);
+//        discreteScrollView.setAdapter(optionAdapter);
         discreteScrollView.setItemTransitionTimeMillis(150);
         discreteScrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMinScale(0.8f)
@@ -118,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerTips.setLayoutManager(layoutManager);
         recyclerTips.setHasFixedSize(true);
         showListTips();
+
+        // Show List Rekomendasi
+        showListRekomendasi();
 
         list = userHelper.getUser(preferencesManager.getId());
 
@@ -282,6 +287,45 @@ public class MainActivity extends AppCompatActivity {
         dataViewModel.getDataTips().observe(this, tipsAPIS -> {
             if (tipsAPIS != null) {
                 tipsAdapter.setData(tipsAPIS);
+            }
+        });
+
+        tipsAdapter.setOnItemClickCallback(data -> {
+//            Intent detailMakanan = new Intent(KumpulanData.this, DetailData.class);
+//            detailMakanan.putExtra("gambar", data.getGambar());
+//            detailMakanan.putExtra("judul", data.getNama());
+//            detailMakanan.putExtra("subjudul", data.getJenis());
+//            detailMakanan.putExtra("deskripsi", data.getDeskripsi());
+//            detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
+//            startActivity(detailMakanan);
+            Toast.makeText(MainActivity.this, "Opps!" + data.getKonteks(), Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    // Tips
+    private void showListRekomendasi() {
+        // Set Adapter
+        rekomendasiAdapter = new RekomendasiAdapter();
+        rekomendasiAdapter.notifyDataSetChanged();
+        discreteScrollView.setAdapter(rekomendasiAdapter);
+
+        // Set Data
+        dataViewModel.setRandomMakanan();
+        dataViewModel.setRandomDiet();
+        dataViewModel.setRandomOlahraga();
+
+        // Get Data apabila sudah ada
+        dataViewModel.getRandomMakanan().observe(this, itemsMakanan -> {
+            if (itemsMakanan != null) {
+                dataViewModel.getRandomDiet().observe(this, itemsDiet -> {
+                    if (itemsDiet != null) {
+                        dataViewModel.getRandomOlahraga().observe(this, itemsOlahraga -> {
+                            if (itemsOlahraga != null) {
+                                rekomendasiAdapter.setData(itemsMakanan, itemsOlahraga, itemsDiet);
+                            }
+                        });
+                    }
+                });
             }
         });
 

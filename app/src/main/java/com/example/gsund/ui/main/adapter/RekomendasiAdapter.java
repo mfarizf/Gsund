@@ -11,34 +11,36 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.gsund.R;
-import com.example.gsund.api.retrofit.model.PenyakitAPI;
+import com.example.gsund.api.retrofit.model.RekomendasiAPI;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecomendationAdapter extends RecyclerView.Adapter<RecomendationAdapter.ViewHolder> {
+public class RekomendasiAdapter extends RecyclerView.Adapter<RekomendasiAdapter.ViewHolder> {
 
-    private ArrayList<PenyakitAPI> mData = new ArrayList<PenyakitAPI>();
+    private ArrayList<RekomendasiAPI> mData = new ArrayList<RekomendasiAPI>();
     private OnItemClickCallback onItemClickCallback;
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    public void setData(ArrayList<PenyakitAPI> items) {
+    public void setData(ArrayList<RekomendasiAPI> itemsMakanan, ArrayList<RekomendasiAPI> itemsOlahraga, ArrayList<RekomendasiAPI> itemsDiet) {
         mData.clear();
-        mData.addAll(items);
+        mData.addAll(itemsMakanan);
+        mData.addAll(itemsDiet);
+        mData.addAll(itemsOlahraga);
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public RecomendationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RekomendasiAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.item_option_home, parent, false);
-        return new RecomendationAdapter.ViewHolder(v);
+        return new RekomendasiAdapter.ViewHolder(v);
     }
 
     @Override
@@ -73,6 +75,6 @@ public class RecomendationAdapter extends RecyclerView.Adapter<RecomendationAdap
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(PenyakitAPI data);
+        void onItemClicked(RekomendasiAPI data);
     }
 }

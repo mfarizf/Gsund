@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.profile.UbahData"></activity>
+        <activity android:name=".ui.olahraga.HistoryOlahraga"></activity>
+        <activity android:name=".ui.profile.UbahData" />
         <activity android:name=".ui.timer.TimerOlahraga" />
         <activity android:name=".ui.menumakan.DetailData" />
         <activity android:name=".ui.menumakan.KumpulanData" />

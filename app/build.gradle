@@ -83,8 +83,8 @@ dependencies {
     implementation 'net.crosp.libs.android:circle-time-view:1.0.6'
     implementation 'com.github.TutorialsAndroid:KAlertDialog:v7.0.19'
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
-    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
     implementation 'mobi.gspd:segmentedbarview:1.1.6@aar'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 
     //Responsive
     implementation 'com.intuit.sdp:sdp-android:1.0.6'

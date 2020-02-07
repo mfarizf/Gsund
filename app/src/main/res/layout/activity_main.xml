@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/layout_radius"
-                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:backgroundTint="#f9ae2f"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="16dp">
@@ -179,7 +179,7 @@
                         android:id="@+id/item_food"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/merah_general">
+                        android:background="#71bf45">
                         <ImageView
                             android:id="@+id/img_soup"
                             android:layout_marginTop="10dp"
@@ -212,7 +212,7 @@
                         android:id="@+id/item_sport"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#93E789">
+                        android:background="#f9ae2f">
                         <ImageView
                             android:id="@+id/img_run"
                             android:layout_marginTop="10dp"
@@ -245,7 +245,7 @@
                         android:id="@+id/item_diet"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/colorAccent">
+                        android:background="#ee4423">
                         <ImageView
                             android:id="@+id/img_brokoli"
                             android:layout_marginTop="10dp"

@@ -7,7 +7,7 @@ public class TipsAPI {
     private int id;
     @SerializedName("judul")
     private String judul;
-    @SerializedName("deskripsi")
+    @SerializedName("isi")
     private String deskripsi;
     @SerializedName("gambar")
     private String gambar;

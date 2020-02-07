@@ -329,13 +329,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         rekomendasiAdapter.setOnItemClickCallback(data -> {
-//            Intent detailMakanan = new Intent(KumpulanData.this, DetailData.class);
-//            detailMakanan.putExtra("gambar", data.getGambar());
-//            detailMakanan.putExtra("judul", data.getNama());
-//            detailMakanan.putExtra("subjudul", data.getJenis());
-//            detailMakanan.putExtra("deskripsi", data.getDeskripsi());
-//            detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
-//            startActivity(detailMakanan);
             showDialog(data.getNama());
         });
     }

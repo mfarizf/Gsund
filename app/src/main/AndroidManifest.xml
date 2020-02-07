@@ -14,24 +14,37 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.olahraga.HistoryOlahraga"></activity>
-        <activity android:name=".ui.profile.UbahData" />
-        <activity android:name=".ui.timer.TimerOlahraga" />
-        <activity android:name=".ui.menumakan.DetailData" />
-        <activity android:name=".ui.menumakan.KumpulanData" />
-        <activity android:name=".ui.menumakan.MenuMakan" />
+        <activity android:name=".ui.profile.Profile2"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.olahraga.HistoryOlahraga"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.profile.UbahData"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.timer.TimerOlahraga"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.menumakan.DetailData"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.menumakan.KumpulanData"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.menumakan.MenuMakan"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.profile_progress.ProgressProfileActivity" />
-        <activity android:name=".ui.profile.ProfileActivity" />
-        <activity android:name=".ui.registrasi.RegisterActivity" />
-        <activity android:name=".ui.intro.Intro" />
-        <activity android:name=".ui.splashscreen.SplashScreen">
+        <activity android:name=".ui.profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.registrasi.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.intro.Intro"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.splashscreen.SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

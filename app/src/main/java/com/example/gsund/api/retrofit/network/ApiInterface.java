@@ -4,6 +4,7 @@ import com.example.gsund.api.retrofit.response.DietResponse;
 import com.example.gsund.api.retrofit.response.MakananResponse;
 import com.example.gsund.api.retrofit.response.OlahragaResponse;
 import com.example.gsund.api.retrofit.response.PenyakitResponse;
+import com.example.gsund.api.retrofit.response.RekomendasiResponse;
 import com.example.gsund.api.retrofit.response.TipsResponse;
 
 import retrofit2.Call;
@@ -29,4 +30,14 @@ public interface ApiInterface {
         //Dapatkan Tips
         @GET("tips")
         Call<TipsResponse> getListTips();
+
+        // Rekomendasi
+        @GET("random/foods")
+        Call<RekomendasiResponse> getRekomendasiMakanan();
+
+        @GET("random/sports")
+        Call<RekomendasiResponse> getRekomendasiOlahraga();
+
+        @GET("random/diets")
+        Call<RekomendasiResponse> getRekomendasiDiet();
 }

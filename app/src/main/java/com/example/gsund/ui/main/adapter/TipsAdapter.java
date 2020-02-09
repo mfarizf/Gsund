@@ -48,6 +48,7 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
                 .into(holder.imgBackground);
 
         holder.judul.setText(mData.get(position).getJudul());
+        holder.isi.setText(mData.get(position).getDeskripsi());
 
     }
 
@@ -61,6 +62,8 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
         ImageView imgBackground;
         @BindView(R.id.judul)
         TextView judul;
+        @BindView(R.id.isi)
+        TextView isi;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

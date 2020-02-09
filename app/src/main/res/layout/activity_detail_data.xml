@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,63 +7,61 @@
     android:background="#FFF"
     tools:context="com.example.gsund.ui.menumakan.DetailData">
 
-    <ImageView
-        android:id="@+id/img_gambar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_240sdp"
-        android:scaleType="centerCrop"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        tools:src="@drawable/img_diet_low_fat" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_appintro_arrow_back_white"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="@dimen/_200sdp"
-        android:layout_marginRight="32dp"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_judul"
+        <ImageView
+            android:id="@+id/img_gambar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp"
-            android:text="Menu Rekomendasi"
-            android:textColor="#000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="@dimen/_240sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/img_diet_low_fat" />
 
-        <TextView
-            android:id="@+id/tv_subjudul"
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_appintro_arrow_back_white" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:paddingLeft="20dp"
-            android:text="Rekomendasi 200 KCAL"
-            android:textSize="18sp" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="100dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="@dimen/_200sdp"
+            android:layout_marginRight="32dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/cardView3"
-        android:layout_above="@+id/btn_action">
+            <TextView
+                android:id="@+id/tv_judul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="Menu Rekomendasi"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_subjudul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:paddingLeft="20dp"
+                android:text="Rekomendasi 200 KCAL"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_deskripsi"
@@ -73,22 +71,21 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="35dp"
             android:paddingBottom="20dp"
-            android:text="Lorem Ipsum sir dolor amet" />
+            android:text="Lorem Ipsum sir dolor amet"
+            android:layout_below="@id/cardView3" />
 
-    </ScrollView>
+        <Button
+            android:id="@+id/btn_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#03AC0E"
+            android:text="Beli Makanan"
+            android:layout_below="@id/tv_deskripsi"
+            android:textAllCaps="false"
+            android:textColor="#FFF" />
 
-    <Button
-        android:id="@+id/btn_action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="#03AC0E"
-        android:text="Beli Makanan"
-        android:textAllCaps="false"
-        android:textColor="#FFF"
-        android:layout_alignParentBottom="true"/>
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

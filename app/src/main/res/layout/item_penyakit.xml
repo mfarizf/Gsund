@@ -28,9 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_bold"
-            android:text="Push Up"
+            tools:text="Push Up"
             android:textSize="18sp"
-            android:padding="@dimen/_6sdp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textAlignment="center"
             android:textColor="@android:color/black" />
 
@@ -39,11 +40,11 @@
             android:id="@+id/tv_deskripsi"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:maxLines="1"
+            android:maxLines="2"
             android:ellipsize="end"
-            android:padding="10dp"
+            android:padding="7dp"
             android:textAlignment="center"
-            android:text="Deskripsi Olahraga" />
+            tools:text="Deskripsi Olahraga" />
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -3,7 +3,6 @@ package com.example.gsund.ui.menumakan;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.media.SoundPool;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -86,7 +85,7 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
 
         // Cek Action Apa yang digunakan
         if (action.equals(ACTION_MAKANAN)) {
-            btnAction.setText("Beli Makanan");
+            btnAction.setText("Makan");
         } else if (action.equals(ACTION_DIET)) {
             Toast.makeText(this, "Upgrade ke premium untuk menggunakan fitur ini! ^_^", Toast.LENGTH_SHORT).show();
             btnAction.setText("Yuk Diet!");
@@ -121,7 +120,7 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
         String action = dataIntent.getStringExtra(EXTRA_ACTION);
 
         if (action.equals(ACTION_MAKANAN)) {
-            beliMakanan(keyword);
+            makan();
         } else if (action.equals(ACTION_DIET)) {
             pelajariDiet(keyword);
         } else if (action.equals(ACTION_PENYAKIT)) {
@@ -133,16 +132,16 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    private void beliMakanan(String keyword) {
-        Intent browserIntent = new Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://www.tokopedia.com/search?st=product&q=" + keyword)
-        );
-        startActivity(browserIntent);
-        if (spLoaded) {
-            sp.play(soundId, 1f, 1f, 0, 0, 1f);
-        }
-        Toast.makeText(this, "Mencari " + keyword + " di Tokopedia! ^_^", Toast.LENGTH_SHORT).show();
+    private void makan() {
+//        Intent browserIntent = new Intent(
+//                Intent.ACTION_VIEW,
+//                Uri.parse("https://www.tokopedia.com/search?st=product&q=" + keyword)
+//        );
+//        startActivity(browserIntent);
+//        if (spLoaded) {
+//            sp.play(soundId, 1f, 1f, 0, 0, 1f);
+//        }
+//        Toast.makeText(this, "Mencari " + keyword + " di Tokopedia! ^_^", Toast.LENGTH_SHORT).show();
     }
 
     private void pelajariDiet(String keyword) {

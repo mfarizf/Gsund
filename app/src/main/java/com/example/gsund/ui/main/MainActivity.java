@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -22,18 +21,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.developer.kalert.KAlertDialog;
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.example.gsund.R;
 import com.example.gsund.api.retrofit.DataViewModel;
 import com.example.gsund.data.db.helper.UserHelper;
 import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
+import com.example.gsund.ui.main.adapter.RekomendasiAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menumakan.KumpulanData;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.utils.AlarmNotification;
-import com.example.gsund.utils.RecyclerOnTouchListener;
-import com.example.gsund.utils.RecyclerViewClickListener;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
@@ -85,7 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
     // Adapter
     TipsAdapter tipsAdapter;
+    RekomendasiAdapter rekomendasiAdapter;
     DataViewModel dataViewModel;
+
+    // SkeletonView
+    SkeletonScreen skeletonRekomendasi, skeletonTips;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         discreteScrollView.setOrientation(DSVOrientation.HORIZONTAL);
-        discreteScrollView.setAdapter(optionAdapter);
+//        discreteScrollView.setAdapter(optionAdapter);
         discreteScrollView.setItemTransitionTimeMillis(150);
         discreteScrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMinScale(0.8f)
@@ -118,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerTips.setLayoutManager(layoutManager);
         recyclerTips.setHasFixedSize(true);
         showListTips();
+
+        // Show List Rekomendasi
+        showListRekomendasi();
+
 
         list = userHelper.getUser(preferencesManager.getId());
 
@@ -145,26 +153,22 @@ public class MainActivity extends AppCompatActivity {
                      .load(R.drawable.img_ic_diet)
                      .into(imageDiet);
 
-        discreteScrollView.addOnItemTouchListener(new RecyclerOnTouchListener(MainActivity.this, recyclerTips, new RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                showDialog(item.get(position).getName());
+        rSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+             getDrinkAlarm();
+             rSwitch.setChecked(true);
+            }else{
+                cancelAlarm();
+                rSwitch.setChecked(false);
             }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-
-
+        });
     }
 
 
     private void showDialog(String text){
         KAlertDialog pDialog = new KAlertDialog(this, KAlertDialog.SUCCESS_TYPE);
         pDialog.confirmButtonColor(R.color.colorPrimary);
-        pDialog.setTitleText("Are you Sure ?");
+        pDialog.setTitleText("Kamu memilih");
         pDialog.setContentText(text);
         pDialog.show();
     }
@@ -179,6 +183,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
     }
 
+    private  void getDrinkAlarm() {
+        String title = "Minum Air";
+        String message = "Jangan Lupa Minum Air 2 Liter/Hari !";
+        int notifID = 101;
+
+        alarmNotification.showNotification(getApplicationContext(), title, message, notifID);
+        alarmNotification.setRepeatingAlarm(this, alarmNotification.TYPE_REPEATING, "30", message);
+
+    }
+
+    private  void cancelAlarm(){
+        alarmNotification.cancelAlarm(this,alarmNotification.TYPE_REPEATING);
+    }
 
 
     //for schedulede notification
@@ -254,6 +271,9 @@ public class MainActivity extends AppCompatActivity {
         tipsAdapter.notifyDataSetChanged();
         recyclerTips.setAdapter(tipsAdapter);
 
+        // SkeletonView
+        skeletonTips = Skeleton.bind(recyclerTips).adapter(tipsAdapter).load(R.layout.item_tips).show();
+
         // Set Data
         dataViewModel.setDataTips();
 
@@ -261,6 +281,7 @@ public class MainActivity extends AppCompatActivity {
         dataViewModel.getDataTips().observe(this, tipsAPIS -> {
             if (tipsAPIS != null) {
                 tipsAdapter.setData(tipsAPIS);
+                skeletonTips.hide();
             }
         });
 
@@ -273,6 +294,42 @@ public class MainActivity extends AppCompatActivity {
 //            detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
 //            startActivity(detailMakanan);
             Toast.makeText(MainActivity.this, "Opps!" + data.getKonteks(), Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    // Tips
+    private void showListRekomendasi() {
+        // Set Adapter
+        rekomendasiAdapter = new RekomendasiAdapter();
+        rekomendasiAdapter.notifyDataSetChanged();
+        discreteScrollView.setAdapter(rekomendasiAdapter);
+
+        // Skeleton View
+        skeletonRekomendasi = Skeleton.bind(discreteScrollView).adapter(rekomendasiAdapter).load(R.layout.item_option_home).show();
+
+        // Set Data
+        dataViewModel.setRandomMakanan();
+        dataViewModel.setRandomDiet();
+        dataViewModel.setRandomOlahraga();
+
+        // Get Data apabila sudah ada
+        dataViewModel.getRandomMakanan().observe(this, itemsMakanan -> {
+            if (itemsMakanan != null) {
+                dataViewModel.getRandomDiet().observe(this, itemsDiet -> {
+                    if (itemsDiet != null) {
+                        dataViewModel.getRandomOlahraga().observe(this, itemsOlahraga -> {
+                            if (itemsOlahraga != null) {
+                                rekomendasiAdapter.setData(itemsMakanan, itemsOlahraga, itemsDiet);
+                                skeletonRekomendasi.hide();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        rekomendasiAdapter.setOnItemClickCallback(data -> {
+            showDialog(data.getNama());
         });
     }
 

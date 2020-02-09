@@ -2,24 +2,24 @@ package com.example.gsund.api.retrofit.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TipsAPI {
+public class RekomendasiAPI {
     @SerializedName("id")
     private int id;
-    @SerializedName("judul")
-    private String judul;
-    @SerializedName("isi")
+    @SerializedName("nama")
+    private String nama;
+    @SerializedName("deskripsi")
     private String deskripsi;
     @SerializedName("gambar")
     private String gambar;
-    @SerializedName("konteks")
-    private String konteks;
+    @SerializedName("tipe")
+    private String tipe;
 
-    public TipsAPI(int id, String judul, String deskripsi, String gambar, String konteks) {
+    public RekomendasiAPI(int id, String nama, String deskripsi, String gambar, String tipe) {
         this.id = id;
-        this.judul = judul;
+        this.nama = nama;
         this.deskripsi = deskripsi;
         this.gambar = gambar;
-        this.konteks = konteks;
+        this.tipe = tipe;
     }
 
     public int getId() {
@@ -30,12 +30,12 @@ public class TipsAPI {
         this.id = id;
     }
 
-    public String getJudul() {
-        return judul;
+    public String getNama() {
+        return nama;
     }
 
-    public void setJudul(String judul) {
-        this.judul = judul;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public String getDeskripsi() {
@@ -54,11 +54,11 @@ public class TipsAPI {
         this.gambar = gambar;
     }
 
-    public String getKonteks() {
-        return konteks;
+    public String getTipe() {
+        return tipe;
     }
 
-    public void setKonteks(String konteks) {
-        this.konteks = konteks;
+    public void setTipe(String tipe) {
+        this.tipe = tipe;
     }
 }

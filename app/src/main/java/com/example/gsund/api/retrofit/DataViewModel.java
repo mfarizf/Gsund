@@ -10,6 +10,7 @@ import com.example.gsund.api.retrofit.model.DietAPI;
 import com.example.gsund.api.retrofit.model.MakananAPI;
 import com.example.gsund.api.retrofit.model.OlahragaAPI;
 import com.example.gsund.api.retrofit.model.PenyakitAPI;
+import com.example.gsund.api.retrofit.model.RekomendasiAPI;
 import com.example.gsund.api.retrofit.model.TipsAPI;
 import com.example.gsund.api.retrofit.network.ApiInterface;
 import com.example.gsund.api.retrofit.network.RetrofitInstance;
@@ -17,6 +18,7 @@ import com.example.gsund.api.retrofit.response.DietResponse;
 import com.example.gsund.api.retrofit.response.MakananResponse;
 import com.example.gsund.api.retrofit.response.OlahragaResponse;
 import com.example.gsund.api.retrofit.response.PenyakitResponse;
+import com.example.gsund.api.retrofit.response.RekomendasiResponse;
 import com.example.gsund.api.retrofit.response.TipsResponse;
 
 import org.jetbrains.annotations.NotNull;
@@ -35,6 +37,7 @@ public class DataViewModel extends ViewModel {
     private PenyakitResponse penyakitResponse;
     private DietResponse dietResponse;
     private TipsResponse tipsResponse;
+    private RekomendasiResponse rekomendasiResponse;
 
     // Kumpulan Live Data
     private MutableLiveData<ArrayList<MakananAPI>> listDataMakanan = new MutableLiveData<>();
@@ -42,6 +45,9 @@ public class DataViewModel extends ViewModel {
     private MutableLiveData<ArrayList<PenyakitAPI>> listDataPenyakit = new MutableLiveData<>();
     private MutableLiveData<ArrayList<DietAPI>> listDataDiet = new MutableLiveData<>();
     private MutableLiveData<ArrayList<TipsAPI>> listDatatips = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<RekomendasiAPI>> listDataRekomendasiMakanan = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<RekomendasiAPI>> listDataRekomendasiDiet = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<RekomendasiAPI>> listDataRekomendasiOlahraga = new MutableLiveData<>();
 
     // Makanan
     public void setDataMakanan() {
@@ -201,6 +207,102 @@ public class DataViewModel extends ViewModel {
 
     public LiveData<ArrayList<TipsAPI>> getDataTips() {
         return listDatatips;
+    }
+
+    // Random Makanan
+    public void setRandomMakanan() {
+        ApiInterface service = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
+
+        Call<RekomendasiResponse> call = service.getRekomendasiMakanan();
+
+        call.enqueue(new Callback<RekomendasiResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<RekomendasiResponse> call, @NotNull Response<RekomendasiResponse> response) {
+                if (response.isSuccessful()) {
+                    rekomendasiResponse = response.body();
+                    if (rekomendasiResponse != null) {
+                        listDataRekomendasiMakanan.postValue(rekomendasiResponse.getValues());
+                    } else {
+                        Log.d("CheckDataFromAPI", "Data Kosong!");
+                    }
+                } else {
+                    Log.d("CheckDataFromAPI", "Response Gagal diterima!");
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<RekomendasiResponse> call, @NotNull Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public LiveData<ArrayList<RekomendasiAPI>> getRandomMakanan() {
+        return listDataRekomendasiMakanan;
+    }
+
+    // Random Diet
+    public void setRandomDiet() {
+        ApiInterface service = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
+
+        Call<RekomendasiResponse> call = service.getRekomendasiDiet();
+
+        call.enqueue(new Callback<RekomendasiResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<RekomendasiResponse> call, @NotNull Response<RekomendasiResponse> response) {
+                if (response.isSuccessful()) {
+                    rekomendasiResponse = response.body();
+                    if (rekomendasiResponse != null) {
+                        listDataRekomendasiDiet.postValue(rekomendasiResponse.getValues());
+                    } else {
+                        Log.d("CheckDataFromAPI", "Data Kosong!");
+                    }
+                } else {
+                    Log.d("CheckDataFromAPI", "Response Gagal diterima!");
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<RekomendasiResponse> call, @NotNull Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public LiveData<ArrayList<RekomendasiAPI>> getRandomDiet() {
+        return listDataRekomendasiDiet;
+    }
+
+    // Random Olahraga
+    public void setRandomOlahraga() {
+        ApiInterface service = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
+
+        Call<RekomendasiResponse> call = service.getRekomendasiOlahraga();
+
+        call.enqueue(new Callback<RekomendasiResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<RekomendasiResponse> call, @NotNull Response<RekomendasiResponse> response) {
+                if (response.isSuccessful()) {
+                    rekomendasiResponse = response.body();
+                    if (rekomendasiResponse != null) {
+                        listDataRekomendasiOlahraga.postValue(rekomendasiResponse.getValues());
+                    } else {
+                        Log.d("CheckDataFromAPI", "Data Kosong!");
+                    }
+                } else {
+                    Log.d("CheckDataFromAPI", "Response Gagal diterima!");
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<RekomendasiResponse> call, @NotNull Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public LiveData<ArrayList<RekomendasiAPI>> getRandomOlahraga() {
+        return listDataRekomendasiOlahraga;
     }
 
 }

@@ -157,15 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
 
-        rSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(isChecked){
-             getDrinkAlarm();
-             rSwitch.setChecked(true);
-            }else{
-                cancelAlarm();
-                rSwitch.setChecked(false);
-            }
-        });
+
     }
 
 
@@ -187,19 +179,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
     }
 
-    private  void getDrinkAlarm() {
-        String title = "Minum Air";
-        String message = "Jangan Lupa Minum Air 2 Liter/Hari !";
-        int notifID = 101;
-
-        alarmNotification.showNotification(getApplicationContext(), title, message, notifID);
-        alarmNotification.setRepeatingAlarm(this, alarmNotification.TYPE_REPEATING, "30", message);
-
-    }
-
-    private  void cancelAlarm(){
-        alarmNotification.cancelAlarm(this,alarmNotification.TYPE_REPEATING);
-    }
 
 
     //for schedulede notification

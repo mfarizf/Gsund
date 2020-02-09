@@ -14,12 +14,12 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.profile.UbahData"></activity>
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".ui.profile.UbahData" />
         <activity android:name=".ui.timer.TimerOlahraga" />
         <activity android:name=".ui.menumakan.DetailData" />
         <activity android:name=".ui.menumakan.KumpulanData" />
         <activity android:name=".ui.menumakan.MenuMakan" />
-        <activity android:name=".ui.profile_progress.ProgressProfileActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.registrasi.RegisterActivity" />
         <activity android:name=".ui.intro.Intro" />

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.gsund.R;
+import com.example.gsund.Settings;
 import com.example.gsund.ui.main.MainActivity;
 import com.example.gsund.ui.menumakan.MenuMakan;
 import com.example.gsund.ui.profile.adapter.SectionsPagerAdapter;
@@ -49,6 +50,17 @@ public class ProfileActivity extends AppCompatActivity {
         Glide.with(this).load(R.drawable.gunung).into(imageBack);
         Glide.with(this).load(R.drawable.pic_sample_1).into(imageProfile);
         Glide.with(this).load(R.drawable.ic_settings_black_24dp).into(settings);
+
+
     }
+
+
+    @OnClick(R.id.setting)
+    void onClick(){
+        startActivity(new Intent(ProfileActivity.this, Settings.class));
+    }
+
+
+
 
 }

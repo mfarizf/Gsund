@@ -64,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageSport;
     @BindView(R.id.img_brokoli)
     ImageView imageDiet;
-    @BindView(R.id.repeat_switch)
-    Switch rSwitch;
 
     //declare alarm notification
     AlarmNotification alarmNotification = new AlarmNotification();
@@ -153,15 +151,7 @@ public class MainActivity extends AppCompatActivity {
                      .load(R.drawable.img_ic_diet)
                      .into(imageDiet);
 
-        rSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(isChecked){
-             getDrinkAlarm();
-             rSwitch.setChecked(true);
-            }else{
-                cancelAlarm();
-                rSwitch.setChecked(false);
-            }
-        });
+
     }
 
 

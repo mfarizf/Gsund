@@ -14,8 +14,6 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.profile.Profile2"
-            android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.olahraga.HistoryOlahraga"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.profile.UbahData"

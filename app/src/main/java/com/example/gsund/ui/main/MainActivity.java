@@ -33,6 +33,7 @@ import com.example.gsund.ui.main.adapter.RekomendasiAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menumakan.KumpulanData;
 import com.example.gsund.ui.profile.ProfileActivity;
+import com.example.gsund.ui.progress.ProgressActivity;
 import com.example.gsund.utils.AlarmNotification;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
@@ -321,6 +322,11 @@ public class MainActivity extends AppCompatActivity {
         rekomendasiAdapter.setOnItemClickCallback(data -> {
             showDialog(data.getNama());
         });
+    }
+
+    @OnClick(R.id.lihatProgress)
+    void lihatProgress() {
+        startActivity(new Intent(MainActivity.this, ProgressActivity.class));
     }
 
 }

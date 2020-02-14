@@ -96,4 +96,7 @@ dependencies {
     // SkeletonView
     implementation 'com.ethanhua:skeleton:1.1.2'
     implementation 'io.supercharge:shimmerlayout:2.1.0'
+
+    // ProgressView
+    implementation "com.github.skydoves:progressview:1.0.5"
 }

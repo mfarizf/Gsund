@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gsund.ui.progress.ProgressMakanActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:text="Detail Progress"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_progress_makan"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_back">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/img_background_makan"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/food" />
+
+                <ImageView
+                    android:id="@+id/layer_transparan_makan"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:alpha="0.5"
+                    android:background="#000" />
+
+                <TextView
+                    android:id="@+id/label_makan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Progress Makan Hari ini"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <com.skydoves.progressview.ProgressView
+                    android:id="@+id/progress_makan"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_below="@id/img_background_makan"
+                    android:layout_margin="10dp"
+                    android:elevation="5dp"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@android:color/white"
+                    app:progressView_colorProgress="#42B549"
+                    app:progressView_labelColorInner="@android:color/white"
+                    app:progressView_labelColorOuter="@android:color/black"
+                    app:progressView_labelSize="13sp"
+                    app:progressView_labelSpace="10dp"
+                    app:progressView_labelText="Tercapai 65%"
+                    app:progressView_labelTypeface="bold"
+                    app:progressView_max="100"
+                    app:progressView_min="15"
+                    app:progressView_padding="1dp"
+                    app:progressView_progress="65"
+                    app:progressView_radius="30dp" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_progress_makan">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true">
+
+                <com.skydoves.progressview.ProgressView
+                    android:layout_width="20dp"
+                    android:layout_height="120dp"
+                    android:layout_below="@id/img_background_makan"
+                    android:layout_gravity="center"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@android:color/white"
+                    app:progressView_colorProgress="#EE4423"
+                    app:progressView_labelColorInner="@android:color/white"
+                    app:progressView_labelColorOuter="@android:color/black"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="vertical"
+                    app:progressView_padding="1dp"
+                    app:progressView_progress="100"
+                    app:progressView_radius="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:paddingTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:text="Karbohidrat" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:padding="10dp"
+                    android:text="100%" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true">
+
+                <com.skydoves.progressview.ProgressView
+                    android:layout_width="20dp"
+                    android:layout_height="120dp"
+                    android:layout_below="@id/img_background_makan"
+                    android:layout_gravity="center"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@android:color/white"
+                    app:progressView_colorProgress="#F9AE2F"
+                    app:progressView_labelColorInner="@android:color/white"
+                    app:progressView_labelColorOuter="@android:color/black"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="vertical"
+                    app:progressView_padding="1dp"
+                    app:progressView_progress="100"
+                    app:progressView_radius="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:paddingTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:text="Lemak" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:padding="10dp"
+                    android:text="100%" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true">
+
+                <com.skydoves.progressview.ProgressView
+                    android:layout_width="20dp"
+                    android:layout_height="120dp"
+                    android:layout_below="@id/img_background_makan"
+                    android:layout_gravity="center"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@android:color/white"
+                    app:progressView_colorProgress="#02A3B1"
+                    app:progressView_labelColorInner="@android:color/white"
+                    app:progressView_labelColorOuter="@android:color/black"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="vertical"
+                    app:progressView_padding="1dp"
+                    app:progressView_progress="100"
+                    app:progressView_radius="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:paddingTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:text="Protein" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:padding="10dp"
+                    android:text="100%" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

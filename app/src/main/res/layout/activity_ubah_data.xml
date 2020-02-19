@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,35 +16,60 @@
         android:layout_height="180dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/undraw_healthy_lifestyle_6tyl" />
 
 
-    <EditText
-        android:background="@drawable/outline_register_edit_text"
-        android:id="@+id/edtText_bb"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp"
-        android:layout_margin="@dimen/_20sdp"
-        android:layout_marginTop="200dp"
-        android:hint="Berat Badan"
-        app:layout_constraintTop_toBottomOf="@+id/image_backdrop"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="@string/tinggi_badan">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/update_input_tb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:singleLine="true" />
 
-    <EditText
-        android:background="@drawable/outline_register_edit_text"
-        android:padding="@dimen/_10sdp"
-        android:id="@+id/edtText_tb"
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        android:hint="Tinggi Badan"
-        app:layout_constraintTop_toBottomOf="@+id/edtText_bb" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="@string/berat_bedan">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/update_input_bb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="@string/riwayat_penyakit">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/update_input_riwayat_penyakit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_simpandata"
@@ -55,24 +80,6 @@
         android:fontFamily="@font/notosans_bold"
         android:text="Simpan Data"
         android:textAllCaps="false"
-        android:textColor="@color/putih"
-        app:layout_constraintBottom_toTopOf="@+id/button" />
+        android:textColor="@color/putih" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_blue"
-        android:fontFamily="@font/notosans_bold"
-        android:text="Upgrade Premium"
-        android:textAllCaps="false"
-        android:textColor="@color/putih"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

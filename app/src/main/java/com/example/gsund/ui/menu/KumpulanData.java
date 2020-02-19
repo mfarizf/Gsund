@@ -1,4 +1,4 @@
-package com.example.gsund.ui.menumakan;
+package com.example.gsund.ui.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -128,7 +128,12 @@ public class KumpulanData extends AppCompatActivity {
             detailMakanan.putExtra("judul", data.getNama());
             detailMakanan.putExtra("subjudul", data.getJenis());
             detailMakanan.putExtra("deskripsi", data.getDeskripsi());
+            detailMakanan.putExtra("karbo", data.getKarbohidrat());
+            detailMakanan.putExtra("protein", data.getProtein());
+            detailMakanan.putExtra("lemak", data.getLemak());
+            detailMakanan.putExtra("kalori", data.getKalori());
             detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
+
             startActivity(detailMakanan);
         });
     }
@@ -205,13 +210,10 @@ public class KumpulanData extends AppCompatActivity {
         dataViewModel.setDataOlahraga();
 
         // Get Data apabila sudah ada
-        dataViewModel.getDataOlahraga().observe(this, new Observer<ArrayList<OlahragaAPI>>() {
-            @Override
-            public void onChanged(ArrayList<OlahragaAPI> olahragaAPIS) {
-                if (olahragaAPIS != null) {
-                    olahragaAdapter.setData(olahragaAPIS);
-                    skeletonListOlahraga.hide();
-                }
+        dataViewModel.getDataOlahraga().observe(this, olahragaAPIS -> {
+            if (olahragaAPIS != null) {
+                olahragaAdapter.setData(olahragaAPIS);
+                skeletonListOlahraga.hide();
             }
         });
 

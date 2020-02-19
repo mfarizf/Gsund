@@ -17,24 +17,17 @@
         <activity android:name=".ui.progress.ProgressMakanActivity"></activity>
         <activity android:name=".ui.progress.ProgressActivity" />
         <activity
-            android:name=".ui.olahraga.HistoryOlahraga"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.profile.UbahData"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.timer.TimerOlahraga"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.menumakan.DetailData"
+            android:name=".ui.menu.DetailData"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.menumakan.KumpulanData"
+            android:name=".ui.menu.KumpulanData"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.menumakan.MenuMakan"
-            android:screenOrientation="portrait" />
-        <activity android:name=".ui.profile_progress.ProgressProfileActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:screenOrientation="portrait" />

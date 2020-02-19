@@ -13,13 +13,19 @@ public class MakananAPI {
     private String kategori;
     @SerializedName("kalori")
     private int kalori;
+    @SerializedName("protein")
+    private double protein;
+    @SerializedName("lemak")
+    private double lemak;
+    @SerializedName("karbohidrat")
+    private double karbohidrat;
     @SerializedName("gambar")
     private String gambar;
     @SerializedName("deskripsi")
     private String deskripsi;
 
     // Constructornya
-    public MakananAPI(int id, String nama, String jenis, String kategori, int kalori, String gambar, String deskripsi) {
+    public MakananAPI(int id, String nama, String jenis, String kategori, int kalori,double protein, double lemak, double karbohidrat, String gambar, String deskripsi) {
         this.id = id;
         this.nama = nama;
         this.jenis = jenis;
@@ -27,7 +33,11 @@ public class MakananAPI {
         this.kalori = kalori;
         this.gambar = gambar;
         this.deskripsi = deskripsi;
+        this.karbohidrat = karbohidrat;
+        this.protein = protein;
+        this.lemak = lemak;
     }
+
 
     public int getId() {
         return id;
@@ -55,6 +65,30 @@ public class MakananAPI {
 
     public String getKategori() {
         return kategori;
+    }
+
+    public double getProtein() {
+        return protein;
+    }
+
+    public void setProtein(double protein) {
+        this.protein = protein;
+    }
+
+    public double getLemak() {
+        return lemak;
+    }
+
+    public void setLemak(double lemak) {
+        this.lemak = lemak;
+    }
+
+    public double getKarbohidrat() {
+        return karbohidrat;
+    }
+
+    public void setKarbohidrat(double karbohidrat) {
+        this.karbohidrat = karbohidrat;
     }
 
     public void setKategori(String kategori) {

@@ -1,23 +1,23 @@
 package com.example.gsund.data.db.helper;
 
-import com.example.gsund.data.db.model.MakananModel;
+import com.example.gsund.data.db.model.AktifitasOlahragaModel;
 
 import io.realm.Realm;
 
-public class MakananHelper {
-    Realm realm;
+public class AktifitasOlahragaHelper {
+    private Realm realm;
 
-    public MakananHelper(Realm realm){
+    public AktifitasOlahragaHelper(Realm realm){
         this.realm = realm;
     }
 
-    public void save (final MakananModel makananModel){
+    public void save (final AktifitasOlahragaModel aktifitasOlahragaModel){
         realm.executeTransaction(realm -> {
 
         });
     }
 
-//    public List<MakananModel> getAllMakanan(){
+//    public List<AktifitasOlahragaModel> getAllOlahraga(){
 //
 //    }
 

@@ -1,8 +1,8 @@
 package com.example.gsund.utils;
 
 import com.example.gsund.data.db.helper.UserHelper;
-import com.example.gsund.data.db.model.MakananModel;
-import com.example.gsund.data.db.model.OlahragaModel;
+import com.example.gsund.data.db.model.AktifitasMakanModel;
+import com.example.gsund.data.db.model.AktifitasOlahragaModel;
 import com.example.gsund.data.db.model.UserModel;
 import com.example.gsund.data.prefs.PreferencesManager;
 
@@ -21,14 +21,14 @@ public class SetupData  {
         this.preferencesManager = preferencesManager;
     }
 
-    public List<MakananModel> setMakanan(List<MakananModel> makananModels){
+    public List<AktifitasMakanModel> setMakanan(List<AktifitasMakanModel> aktifitasMakanModels){
         userModels = userHelper.getUser(preferencesManager.getId());
 
-        return makananModels;
+        return aktifitasMakanModels;
     }
 
-    public List<OlahragaModel> setOlahraga(List<OlahragaModel> olahragaModels){
-        return olahragaModels;
+    public List<AktifitasOlahragaModel> setOlahraga(List<AktifitasOlahragaModel> aktifitasOlahragaModels){
+        return aktifitasOlahragaModels;
     }
 
     public void LoadData(){

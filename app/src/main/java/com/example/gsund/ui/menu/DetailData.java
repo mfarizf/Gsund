@@ -1,5 +1,6 @@
-package com.example.gsund.ui.menumakan;
+package com.example.gsund.ui.menu;
 
+import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.media.SoundPool;
@@ -14,10 +15,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.gsund.R;
+import com.example.gsund.data.db.helper.AktifitasMakanHelper;
+import com.example.gsund.data.db.model.AktifitasMakanModel;
+import com.example.gsund.ui.main.MainActivity;
+import com.example.gsund.ui.progress.ProgressMakanActivity;
 import com.example.gsund.ui.timer.TimerOlahraga;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class DetailData extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,14 +59,19 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
     public final String SUBJUDUL = "subjudul";
     public final String GAMBAR = "gambar";
     public final String DESKRIPSI = "deskripsi";
-
-    private String action, judul, subjudul, gambar, deskripsi;
+    public final String PROTEIN = "deskripsi";
+    public final String KARBOHIDRAT = "deskripsi";
+    public final String LEMAK = "deskripsi";
+    public final String KALORI = "deskripsi";
 
     // Sound
     SoundPool sp;
     int soundId;
     boolean spLoaded = false;
+    Realm realm;
+    String action, judul, subjudul, gambar, deskripsi, kalori, lemak, protein, karbo;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +86,14 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
         subjudul = intent.getStringExtra(SUBJUDUL);
         gambar = intent.getStringExtra(GAMBAR);
         deskripsi = intent.getStringExtra(DESKRIPSI);
+        kalori = intent.getStringExtra(KALORI);
+        lemak = intent.getStringExtra(LEMAK);
+        protein = intent.getStringExtra(PROTEIN);
+        karbo = intent.getStringExtra(KARBOHIDRAT);
+
+        Realm.init(DetailData.this);
+        RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+        realm = Realm.getInstance(configuration);
 
         tvJudul.setText(judul);
         tvSubjudul.setText(String.valueOf(subjudul));
@@ -75,39 +102,39 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
                 .load(gambar)
                 .into(imgGambar);
 
-        btnAction.setOnClickListener(this::onClick);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        btnAction.setOnClickListener(this);
+        btnBack.setOnClickListener(v -> finish());
 
         // Cek Action Apa yang digunakan
-        if (action.equals(ACTION_MAKANAN)) {
-            btnAction.setText("Makan");
-        } else if (action.equals(ACTION_DIET)) {
-            Toast.makeText(this, "Upgrade ke premium untuk menggunakan fitur ini! ^_^", Toast.LENGTH_SHORT).show();
-            btnAction.setText("Yuk Diet!");
-        } else if (action.equals(ACTION_PENYAKIT)) {
-            btnAction.setText("Pelajari Penyakit");
-        } else if (action.equals(ACTION_OLAHRAGA)) {
-            btnAction.setText("Yuk Olahraga!");
-        } else {
-            Toast.makeText(this, "Opps! Kayaknya ada kesalahan nih!", Toast.LENGTH_SHORT).show();
+        assert action != null;
+        switch (action) {
+            case ACTION_MAKANAN:
+                btnAction.setText("Makan");
+                break;
+            case ACTION_DIET:
+                Toast.makeText(this, "Upgrade ke premium untuk menggunakan fitur ini! ^_^", Toast.LENGTH_SHORT).show();
+                btnAction.setText("Yuk Diet!");
+                break;
+            case ACTION_PENYAKIT:
+                btnAction.setText("Pelajari Penyakit");
+                break;
+            case ACTION_OLAHRAGA:
+                btnAction.setText("Yuk Olahraga!");
+                break;
+            default:
+                Toast.makeText(this, "Opps! Kayaknya ada kesalahan nih!", Toast.LENGTH_SHORT).show();
+                break;
         }
 
         // Sound
         sp = new SoundPool.Builder()
                 .setMaxStreams(10)
                 .build();
-        sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                if (status == 0) {
-                    spLoaded = true;
-                } else {
-                    Toast.makeText(DetailData.this, "Gagal load", Toast.LENGTH_SHORT).show();
-                }
+        sp.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
+            if (status == 0) {
+                spLoaded = true;
+            } else {
+                Toast.makeText(DetailData.this, "Gagal load", Toast.LENGTH_SHORT).show();
             }
         });
         soundId = sp.load(this, R.raw.tokopedia, 1);
@@ -119,19 +146,27 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
         String keyword = dataIntent.getStringExtra(JUDUL);
         String action = dataIntent.getStringExtra(EXTRA_ACTION);
 
-        if (action.equals(ACTION_MAKANAN)) {
-            makan();
-        } else if (action.equals(ACTION_DIET)) {
-            pelajariDiet(keyword);
-        } else if (action.equals(ACTION_PENYAKIT)) {
-            pelajariPenyakit(keyword);
-        } else if (action.equals(ACTION_OLAHRAGA)) {
-            olahraga();
-        } else {
-            Toast.makeText(this, "Opps! Kayaknya ada kesalahan nih!", Toast.LENGTH_SHORT).show();
+        assert action != null;
+        switch (action) {
+            case ACTION_MAKANAN:
+                makan();
+                break;
+            case ACTION_DIET:
+                pelajariDiet(keyword);
+                break;
+            case ACTION_PENYAKIT:
+                pelajariPenyakit(keyword);
+                break;
+            case ACTION_OLAHRAGA:
+                olahraga();
+                break;
+            default:
+                Toast.makeText(this, "Opps! Kayaknya ada kesalahan nih!", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
+    @SuppressLint("Assert")
     private void makan() {
 //        Intent browserIntent = new Intent(
 //                Intent.ACTION_VIEW,
@@ -141,7 +176,25 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
 //        if (spLoaded) {
 //            sp.play(soundId, 1f, 1f, 0, 0, 1f);
 //        }
-//        Toast.makeText(this, "Mencari " + keyword + " di Tokopedia! ^_^", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Mencari " + keyword + " di Tokopedia! ^_^", Toast.LENGTH_SHORT).show();\
+        AktifitasMakanModel model = null;
+        AktifitasMakanHelper aktifitasMakanHelper = new AktifitasMakanHelper(realm);
+
+        Date date = Calendar.getInstance().getTime();
+        @SuppressLint("SimpleDateFormat")
+        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = simpleDateFormat.format(date);
+
+        assert false;
+        model.setKalori(Integer.parseInt(kalori));
+        model.setKarbohidrat(Integer.parseInt(karbo));
+        model.setLemak(Integer.parseInt(lemak));
+        model.setNama(judul);
+        model.setProtein(Integer.parseInt(protein));
+        model.setTanggal(dateString);
+
+        aktifitasMakanHelper.save(model);
+        startActivity(new Intent(DetailData.this, ProgressMakanActivity.class));
     }
 
     private void pelajariDiet(String keyword) {

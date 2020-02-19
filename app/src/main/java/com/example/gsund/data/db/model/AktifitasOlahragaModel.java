@@ -3,12 +3,12 @@ package com.example.gsund.data.db.model;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class OlahragaModel extends RealmObject {
+public class AktifitasOlahragaModel extends RealmObject {
 
     @PrimaryKey
     private String id;
     private String nama;
-    private String jenis;
+    private int waktu;
 
     public String getId() {
         return id;
@@ -26,11 +26,11 @@ public class OlahragaModel extends RealmObject {
         this.nama = nama;
     }
 
-    public String getJenis() {
-        return jenis;
+    public int getWaktu() {
+        return waktu;
     }
 
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
+    public void setWaktu(int waktu) {
+        this.waktu = waktu;
     }
 }

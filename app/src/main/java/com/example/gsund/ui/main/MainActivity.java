@@ -1,16 +1,17 @@
 package com.example.gsund.ui.main;
 
+import android.annotation.SuppressLint;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ import com.example.gsund.data.prefs.PreferencesManager;
 import com.example.gsund.ui.main.adapter.OptionAdapter;
 import com.example.gsund.ui.main.adapter.RekomendasiAdapter;
 import com.example.gsund.ui.main.adapter.TipsAdapter;
-import com.example.gsund.ui.menumakan.KumpulanData;
+import com.example.gsund.ui.menu.KumpulanData;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.ui.progress.ProgressActivity;
 import com.example.gsund.utils.AlarmNotification;
@@ -39,8 +40,12 @@ import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -104,9 +109,6 @@ public class MainActivity extends AppCompatActivity {
         userHelper = new UserHelper(realm);
         anim = AnimationUtils.loadAnimation(this,R.anim.logoanim);
 
-        OptionAdapter optionAdapter = new OptionAdapter(item);
-
-
         discreteScrollView.setOrientation(DSVOrientation.HORIZONTAL);
 //        discreteScrollView.setAdapter(optionAdapter);
         discreteScrollView.setItemTransitionTimeMillis(150);
@@ -129,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         list = userHelper.getUser(preferencesManager.getId());
 
         nama.setText(list.get(0).getNamaPanggilan());
-
 //        circleImageView.setImageResource(R.drawable.img_random_face);
 //        imageDiet.setImageResource(R.drawable.img_ic_diet);
 //        imageSport.setImageResource(R.drawable.img_i_sport);
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.job_start, Toast.LENGTH_SHORT).show();
             return;
         }
-        ComponentName mServiceComponent =  new ComponentName(this,AlarmNotification.class);
+        @SuppressLint("JobSchedulerService") ComponentName mServiceComponent =  new ComponentName(this,AlarmNotification.class);
         JobInfo.Builder builder =  new JobInfo.Builder(JOB_ID,mServiceComponent);
         builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
         builder.setRequiresDeviceIdle(false);
@@ -235,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void cancelJob(){
         JobScheduler tm = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        assert tm != null;
         tm.cancel(JOB_ID);
         Toast.makeText(this, "Job Service canceled", Toast.LENGTH_SHORT).show();
         finish();

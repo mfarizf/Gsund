@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/bg_pattern"
     android:layout_height="match_parent"
-    tools:context="com.example.gsund.ui.menumakan.KumpulanData">
+    tools:context="com.example.gsund.ui.menu.KumpulanData">
 
     <ProgressBar
         android:id="@+id/progressLoadAPI"

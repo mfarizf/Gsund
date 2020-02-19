@@ -57,4 +57,23 @@ public class HitungKebutuhan {
         hasil = beratBadan * 30 * level;
         return hasil;
     }
+
+    public double hitungProtein(double bmr) {
+        double hasil;
+        hasil = 0.15 * bmr / 4;
+        return hasil;
+    }
+
+    public double hitungLemak(double bmr) {
+        double hasil;
+        hasil = 0.2 * bmr / 9;
+        return hasil;
+    }
+
+    public double hitungKarbohidrat(double bmr) {
+        double hasil;
+        hasil = 0.65 * bmr / 4;
+        return hasil;
+    }
+
 }

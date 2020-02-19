@@ -15,7 +15,6 @@ class RegisterPresenter {
     private final RegisterCallback registerCallback;
     private final Realm realm;
     private final PreferencesManager preferencesManager;
-    private HitungKebutuhan hitungKebutuhan;
 
     RegisterPresenter(Context context, RegisterCallback registerCallback, Realm realm, PreferencesManager preferencesManager) {
         this.context = context;
@@ -38,15 +37,18 @@ class RegisterPresenter {
         UserHelper userHelper = new UserHelper(realm);
         userHelper.save(userModel);
 
-        hitungKebutuhan = new HitungKebutuhan();
+        HitungKebutuhan hitungKebutuhan = new HitungKebutuhan();
 
         preferencesManager.setFirst(false);
         preferencesManager.setId(userModel.getId());
         double bmi = hitungKebutuhan.hitungBMI(tb,bb);
-
+        double bmr = hitungKebutuhan.hitungBMR(jenkel, tb, bb, umur, intensOlahraga);
         preferencesManager.setBMI(bmi);
-        preferencesManager.setBMR(hitungKebutuhan.hitungBMR(jenkel, tb, bb, umur, intensOlahraga));
+        preferencesManager.setBMR(bmr);
         preferencesManager.setAir(hitungKebutuhan.hitungAir(bb,intensOlahraga));
+        preferencesManager.setKarbohidrat(hitungKebutuhan.hitungKarbohidrat(bmr));
+        preferencesManager.setLemak(hitungKebutuhan.hitungLemak(bmr));
+        preferencesManager.setProtein(hitungKebutuhan.hitungProtein(bmr));
 
         registerCallback.onSuccessRegister();
 

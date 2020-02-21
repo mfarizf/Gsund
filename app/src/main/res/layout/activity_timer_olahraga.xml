@@ -24,7 +24,6 @@
 
     <net.crosp.libs.android.circletimeview.CircleTimeView
         android:id="@+id/circle_timer_view"
-        Of="@id/btn_stop_timer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_280sdp"
         android:layout_marginBottom="32dp"
@@ -58,36 +57,9 @@
         app:ctvTimeMode="manual"
         app:ctvTimeNumberColor="@color/merah_general"
         app:ctvTimeNumbersTextSize="55sp"
-        app:layout_constraintBottom_toTopOf="@id/btn_play_timer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_timer" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/btn_stop_timer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_stop_black_24dp" />
-
-        <ImageView
-            android:id="@+id/btn_play_timer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_play_arrow_black_24dp" />
-
-        <ImageView
-            android:id="@+id/btn_reset_timer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_refresh_black_24dp" />
-    </LinearLayout>
 
 </LinearLayout>

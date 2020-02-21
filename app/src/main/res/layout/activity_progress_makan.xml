@@ -146,6 +146,7 @@
                     android:text="Karbohidrat" />
 
                 <TextView
+                    android:id="@+id/progress_karbo_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
@@ -192,6 +193,7 @@
                     android:text="Lemak" />
 
                 <TextView
+                    android:id="@+id/progress_lemak_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
@@ -238,6 +240,7 @@
                     android:text="Protein" />
 
                 <TextView
+                    android:id="@+id/progress_protein_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"

@@ -10,10 +10,10 @@ public class AktifitasMakanModel extends RealmObject {
     int id;
     private String nama;
     private String tanggal;
-    private int protein;
-    private int lemak;
-    private int karbohidrat;
-    private int kalori;
+    private String protein;
+    private String lemak;
+    private String karbohidrat;
+    private String kalori;
 
     public int getId() {
         return id;
@@ -39,35 +39,35 @@ public class AktifitasMakanModel extends RealmObject {
         this.tanggal = tanggal;
     }
 
-    public int getKalori() {
-        return kalori;
-    }
-
-    public void setKalori(int kalori) {
-        this.kalori = kalori;
-    }
-
-    public int getProtein() {
+    public String getProtein() {
         return protein;
     }
 
-    public void setProtein(int protein) {
+    public void setProtein(String protein) {
         this.protein = protein;
     }
 
-    public int getLemak() {
+    public String getLemak() {
         return lemak;
     }
 
-    public void setLemak(int lemak) {
+    public void setLemak(String lemak) {
         this.lemak = lemak;
     }
 
-    public int getKarbohidrat() {
+    public String getKarbohidrat() {
         return karbohidrat;
     }
 
-    public void setKarbohidrat(int karbohidrat) {
+    public void setKarbohidrat(String karbohidrat) {
         this.karbohidrat = karbohidrat;
+    }
+
+    public String getKalori() {
+        return kalori;
+    }
+
+    public void setKalori(String kalori) {
+        this.kalori = kalori;
     }
 }

@@ -35,6 +35,7 @@ import com.example.gsund.ui.main.adapter.TipsAdapter;
 import com.example.gsund.ui.menu.KumpulanData;
 import com.example.gsund.ui.profile.ProfileActivity;
 import com.example.gsund.ui.progress.ProgressActivity;
+import com.example.gsund.ui.tips.TipsActivity;
 import com.example.gsund.utils.AlarmNotification;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
@@ -279,14 +280,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         tipsAdapter.setOnItemClickCallback(data -> {
-//            Intent detailMakanan = new Intent(KumpulanData.this, DetailData.class);
+            Intent detailTips = new Intent(MainActivity.this, TipsActivity.class);
 //            detailMakanan.putExtra("gambar", data.getGambar());
 //            detailMakanan.putExtra("judul", data.getNama());
 //            detailMakanan.putExtra("subjudul", data.getJenis());
 //            detailMakanan.putExtra("deskripsi", data.getDeskripsi());
 //            detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
-//            startActivity(detailMakanan);
-            Toast.makeText(MainActivity.this, "Opps!" + data.getKonteks(), Toast.LENGTH_SHORT).show();
+            detailTips.putExtra("judul", data.getJudul());
+            detailTips.putExtra("gambar", data.getGambar());
+            detailTips.putExtra("deskripsi", data.getDeskripsi());
+            startActivity(detailTips);
+//            Toast.makeText(MainActivity.this, "Opps!" + data.getKonteks(), Toast.LENGTH_SHORT).show();
         });
     }
 

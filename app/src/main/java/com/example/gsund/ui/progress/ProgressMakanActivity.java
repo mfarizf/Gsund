@@ -37,12 +37,16 @@ public class ProgressMakanActivity extends AppCompatActivity {
     ProgressView progressLemak;
     @BindView(R.id.progress_protein)
     ProgressView progressProtein;
+    @BindView(R.id.progress_lemak_text) TextView lemakText;
+    @BindView(R.id.progress_karbo_text) TextView karboText;
+    @BindView(R.id.progress_protein_text) TextView proteinText;
 
     Realm realm;
     PreferencesManager preferencesManager;
     AktifitasMakanHelper aktifitasMakanHelper;
     List<AktifitasMakanModel> list = new ArrayList<>();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,17 +71,20 @@ public class ProgressMakanActivity extends AppCompatActivity {
         progressProtein.setMax(Float.parseFloat(preferencesManager.getProtein()));
 
         for (int i = 0;i <list.size();i++){
-            progressProtein.setProgress(list.get(i).getProtein());
-            progressLemak.setProgress(list.get(i).getLemak());
-            progressKarbo.setProgress(list.get(i).getKarbohidrat());
-            progressMakan.setProgress(list.get(i).getKalori());
+            progressProtein.setProgress(Float.parseFloat(list.get(i).getProtein()));
+            progressLemak.setProgress(Float.parseFloat(list.get(i).getLemak()));
+            progressKarbo.setProgress(Float.parseFloat(list.get(i).getKarbohidrat()));
+            progressMakan.setProgress(Float.parseFloat(list.get(i).getKalori()));
         }
 //        progressMakan.setProgress(Float.parseFloat(preferencesManager.getBMR()));
 //        progressKarbo.setProgress(50);
 //        progressLemak.setProgress(50);
 //        progressProtein.setProgress(50);
 
-        progressMakan.setLabelText(progressMakan.getProgress()+"%");
+        progressMakan.setLabelText(String.valueOf(progressMakan.getProgress()));
+        lemakText.setText(progressLemak.getProgress()+" gr");
+        proteinText.setText(progressProtein.getProgress()+" gr");
+        karboText.setText(progressKarbo.getProgress()+" gr");
 
         btnBack.setOnClickListener(v -> finish());
     }

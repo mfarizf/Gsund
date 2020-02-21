@@ -2,6 +2,7 @@ package com.example.gsund.ui.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -128,12 +129,12 @@ public class KumpulanData extends AppCompatActivity {
             detailMakanan.putExtra("judul", data.getNama());
             detailMakanan.putExtra("subjudul", data.getJenis());
             detailMakanan.putExtra("deskripsi", data.getDeskripsi());
-            detailMakanan.putExtra("karbo", data.getKarbohidrat());
-            detailMakanan.putExtra("protein", data.getProtein());
-            detailMakanan.putExtra("lemak", data.getLemak());
-            detailMakanan.putExtra("kalori", data.getKalori());
+            detailMakanan.putExtra("karbo", String.valueOf(data.getKarbohidrat()));
+            detailMakanan.putExtra("protein", String.valueOf(data.getProtein()));
+            detailMakanan.putExtra("lemak", String.valueOf(data.getLemak()));
+            detailMakanan.putExtra("kalori", String.valueOf(data.getKalori()));
             detailMakanan.putExtra(EXTRA_ACTION, ACTION_MAKANAN);
-
+            Log.d("haha", data.getLemak() +"+"+data.getKalori());
             startActivity(detailMakanan);
         });
     }

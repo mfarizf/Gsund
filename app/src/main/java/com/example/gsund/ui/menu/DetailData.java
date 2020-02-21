@@ -59,10 +59,10 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
     public final String SUBJUDUL = "subjudul";
     public final String GAMBAR = "gambar";
     public final String DESKRIPSI = "deskripsi";
-    public final String PROTEIN = "deskripsi";
-    public final String KARBOHIDRAT = "deskripsi";
-    public final String LEMAK = "deskripsi";
-    public final String KALORI = "deskripsi";
+    public final String PROTEIN = "protein";
+    public final String KARBOHIDRAT = "karbo";
+    public final String LEMAK = "lemak";
+    public final String KALORI = "kalori";
 
     // Sound
     SoundPool sp;
@@ -86,10 +86,6 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
         subjudul = intent.getStringExtra(SUBJUDUL);
         gambar = intent.getStringExtra(GAMBAR);
         deskripsi = intent.getStringExtra(DESKRIPSI);
-        kalori = intent.getStringExtra(KALORI);
-        lemak = intent.getStringExtra(LEMAK);
-        protein = intent.getStringExtra(PROTEIN);
-        karbo = intent.getStringExtra(KARBOHIDRAT);
 
         Realm.init(DetailData.this);
         RealmConfiguration configuration = new RealmConfiguration.Builder().build();
@@ -180,17 +176,24 @@ public class DetailData extends AppCompatActivity implements View.OnClickListene
         AktifitasMakanModel model = null;
         AktifitasMakanHelper aktifitasMakanHelper = new AktifitasMakanHelper(realm);
 
+        Intent intent = getIntent();
+
+        kalori = intent.getStringExtra(KALORI);
+        lemak = intent.getStringExtra(LEMAK);
+        protein = intent.getStringExtra(PROTEIN);
+        karbo = intent.getStringExtra(KARBOHIDRAT);
+
         Date date = Calendar.getInstance().getTime();
         @SuppressLint("SimpleDateFormat")
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = simpleDateFormat.format(date);
 
         assert false;
-        model.setKalori(Integer.parseInt(kalori));
-        model.setKarbohidrat(Integer.parseInt(karbo));
-        model.setLemak(Integer.parseInt(lemak));
+        model.setKalori(kalori);
+        model.setKarbohidrat(karbo);
+        model.setLemak(lemak);
         model.setNama(judul);
-        model.setProtein(Integer.parseInt(protein));
+        model.setProtein(protein);
         model.setTanggal(dateString);
 
         aktifitasMakanHelper.save(model);

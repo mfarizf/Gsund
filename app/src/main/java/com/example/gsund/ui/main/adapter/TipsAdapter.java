@@ -49,6 +49,12 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
         holder.judul.setText(mData.get(position).getJudul());
         holder.isi.setText(mData.get(position).getDeskripsi());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(mData.get(holder.getAdapterPosition()));
+            }
+        });
 
     }
 

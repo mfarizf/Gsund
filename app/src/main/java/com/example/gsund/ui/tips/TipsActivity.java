@@ -1,23 +1,41 @@
 package com.example.gsund.ui.tips;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.gsund.R;
 
-public class TipsActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class TipsActivity extends AppCompatActivity {
+    @BindView(R.id.gambar)
+    ImageView gambar;
+    @BindView(R.id.judul_tips)
+    TextView judulTips;
+    @BindView(R.id.deskripsi_tips)
+    TextView deskripsiTips;
+
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tips);
+        ButterKnife.bind(this);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        String judul = intent.getStringExtra("judul");
+        String deskripsi = intent.getStringExtra("deskripsi");
+
+        Glide.with(this).load(intent.getStringExtra("gambar")).into(gambar);
+        judulTips.setText(judul);
+        deskripsiTips.setText(deskripsi);
 
     }
 }
